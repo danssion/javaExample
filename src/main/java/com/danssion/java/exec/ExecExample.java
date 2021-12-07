@@ -14,7 +14,7 @@ public class ExecExample {
     public static void testCurl() {
         String[] cmds = {"curl", "-s",
 //                "--form-string","text='Testing some Mailgun heeeellllllooooo!'",
-                "--user", "api:14dc5c76561c54e45e6435edff5cc884-2d27312c-5e87c30b",
+                "--user", "api:14dc5c76561c54e45e6435edff5cc884-",
 
 //        " https://api.mailgun.net/v3/mg.mytokenmsg.com/messages  -F from='no-reply<no-reply@mg.mytokenmsg.com>'  -F to=duanxiang@haodelian.com  -F to=dev@haodelian.com -F subject='Hello' -F text='Testing some Mailgun awesomeness!",
 //        "-F","from='no-reply<no-reply@mg.mytokenmsg.com>'",
@@ -70,7 +70,7 @@ public class ExecExample {
             // run the Unix "ps -ef" command
             // using the Runtime exec method:
             //Process p = Runtime.getRuntime().exec("ps -ef");
-            Process p = Runtime.getRuntime().exec("curl -s --user api:14dc5c76561c54e45e6435edff5cc884-2d27312c-5e87c30b" +
+            Process p = Runtime.getRuntime().exec("curl -s --user api:14dc5c76561c54e45e6435edff5cc884" +
                     " https://api.mailgun.net/v3/mg.mytokenmsg.com/messages  " +
                     "--form-string from=no-reply@mg.mytokenmsg.com  --form-string to=duanxiang@haodelian.com  --form-string to=dev@haodelian.com --form-string subject=Hello " +
                     "--form-string html='<html>Inline image here: <img src=\"cid:cartman.jpg\"></html>'"+
