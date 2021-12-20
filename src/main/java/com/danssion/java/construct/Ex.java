@@ -4,15 +4,17 @@ public class Ex {
     public static void main(String[] args) {
         Fx f = new Fx(5);
     }
+
     Ex() {
         System.out.println("Ex, no args");
     }
-    Ex(int i){
+
+    Ex(int i) {
         System.out.println("Ex int");
     }
 }
 
-class Fx extends  Ex {
+class Fx extends Ex {
     Fx() {
         super();
         System.out.println("Fx,no-args");

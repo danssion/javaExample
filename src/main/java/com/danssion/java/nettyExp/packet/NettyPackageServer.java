@@ -19,7 +19,7 @@ public class NettyPackageServer {
         EventLoopGroup workGroup = new NioEventLoopGroup();
 
         ServerBootstrap serverBootstrap = new ServerBootstrap();
-        serverBootstrap.group(bossGroup,workGroup)
+        serverBootstrap.group(bossGroup, workGroup)
                 .channel(NioServerSocketChannel.class)
                 .childHandler(new ChannelInitializer<SocketChannel>() {
                     @Override
@@ -30,9 +30,9 @@ public class NettyPackageServer {
 //                                .addLast(new DelimiterBasedFrameDecoder(10,true,true,delimiter))
 
                                 //解码client 端的 LengthFieldPrepender + msg
-                                .addLast(new LengthFieldBasedFrameDecoder(1024*1024,
-                                        0,4
-                                ,0,4))
+                                .addLast(new LengthFieldBasedFrameDecoder(1024 * 1024,
+                                        0, 4
+                                        , 0, 4))
                                 .addLast(new StringDecoder())
                                 .addLast(new SimpleSeverHandle());
                     }

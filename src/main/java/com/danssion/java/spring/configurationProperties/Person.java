@@ -12,7 +12,7 @@ import java.util.Map;
 @Getter
 @Setter
 @Component
-@ConfigurationProperties(prefix="person")
+@ConfigurationProperties(prefix = "person")
 public class Person {
 
     private String lastName;

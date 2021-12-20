@@ -13,7 +13,7 @@ public class SpringBeanLife {
     }
 
     //@Bean注解注册bean,同时可以指定初始化和销毁方法
-    @Bean(name="testBean",initMethod="start",destroyMethod="cleanUp")
+    @Bean(name = "testBean", initMethod = "start", destroyMethod = "cleanUp")
     @Scope("prototype")
     public TestBean testBean() {
         return new TestBean();

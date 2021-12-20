@@ -15,6 +15,7 @@ class ReadWriteTool {
     private Lock readLock = lock.readLock();
     private Lock writeLock = lock.writeLock();
     private int num = 0;
+
     public void read() {//读的方法
         int cnt = 0;
         while (cnt++ < 3) {
@@ -24,13 +25,14 @@ class ReadWriteTool {
                         + " start to read");
                 Thread.sleep(1000);
                 System.out.println(Thread.currentThread().getId() + " reading," + num);
-            } catch (Exception e)
-            { e.printStackTrace();}
-            finally {
+            } catch (Exception e) {
+                e.printStackTrace();
+            } finally {
                 readLock.unlock();
             }
         }
     }
+
     public void write() {//写的方法
         int cnt = 0;
         while (cnt++ < 3) {
@@ -41,15 +43,16 @@ class ReadWriteTool {
                 Thread.sleep(1000);
                 num = (int) (Math.random() * 10);
                 System.out.println(Thread.currentThread().getId() + " write," + num);
-            } catch (Exception e)
-            { e.printStackTrace();}
-            finally {
+            } catch (Exception e) {
+                e.printStackTrace();
+            } finally {
                 writeLock.unlock();
                 System.out.println(Thread.currentThread().getId() + " write release ");
             }
         }
     }
 }
+
 /**
  * 在第18行的 read 方法里，我们是先通过第22行的代码加“读锁“，随后在第15行进行读操作。
  * 在第31行的 write 方法里，我们是先通过第35行的代码加“写锁”，随后在第30行进行写操作
@@ -58,21 +61,28 @@ class ReadWriteTool {
 
 class ReadThread extends Thread {
     private ReadWriteTool readTool;
-    public ReadThread(ReadWriteTool readTool)
-    { this.readTool = readTool; }
+
+    public ReadThread(ReadWriteTool readTool) {
+        this.readTool = readTool;
+    }
 
     @Override
-    public void run()
-    { readTool.read();}
+    public void run() {
+        readTool.read();
+    }
 }
+
 class WriteThread extends Thread {
     private ReadWriteTool writeTool;
-    public WriteThread(ReadWriteTool writeTool)
-    { this.writeTool = writeTool; }
+
+    public WriteThread(ReadWriteTool writeTool) {
+        this.writeTool = writeTool;
+    }
 
     @Override
-    public void run()
-    { writeTool.write();    }
+    public void run() {
+        writeTool.write();
+    }
 }
 
 

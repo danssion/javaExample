@@ -27,7 +27,7 @@ public class TestSerialize {
         //以ObjectOutputStream 为例吧，它在序列化的时候会依次调用
         //writeObject()→writeObject0() → writeOrdinaryObject() → writeSerialData()
         // → invokeWriteObject() → defaultWriteFields()
-        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("ObjectFile"));){
+        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("ObjectFile"));) {
             oos.writeObject(wanger);
         } catch (IOException e) {
             e.printStackTrace();
@@ -37,7 +37,7 @@ public class TestSerialize {
         // 从文件中读出对象
         // 反序列化
         //  readObject()→readObject0()→readOrdinaryObject()→readSerialData()→defaultReadFields()
-        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(new File("ObjectFile")));){
+        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(new File("ObjectFile")));) {
             Wanger wanger1 = (Wanger) ois.readObject();
             System.out.println(wanger1);
         } catch (IOException | ClassNotFoundException e) {

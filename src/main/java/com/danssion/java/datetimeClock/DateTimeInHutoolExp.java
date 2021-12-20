@@ -38,21 +38,21 @@ public class DateTimeInHutoolExp {
 
         Calendar calendar = Calendar.getInstance();
         int curHour24 = calendar.get(Calendar.HOUR_OF_DAY);
-        System.out.println("calendar 24 hour:"+curHour24);
+        System.out.println("calendar 24 hour:" + curHour24);
 
         Calendar calendar12 = Calendar.getInstance();
         int curHour12 = calendar12.get(Calendar.HOUR);
-        System.out.println("calendar 12 hour:"+curHour12);
+        System.out.println("calendar 12 hour:" + curHour12);
 
-        System.out.println("calendar start :"+DateUtil.beginOfDay(Calendar.getInstance()).get(Calendar.HOUR_OF_DAY));
+        System.out.println("calendar start :" + DateUtil.beginOfDay(Calendar.getInstance()).get(Calendar.HOUR_OF_DAY));
 
-        System.out.println("calendar start day ts :"+ DateUtil.beginOfDay(Calendar.getInstance()).toInstant().getEpochSecond());
+        System.out.println("calendar start day ts :" + DateUtil.beginOfDay(Calendar.getInstance()).toInstant().getEpochSecond());
 
         System.out.println("calendar yesterday ts :" + DateUtil.yesterday().toInstant().getEpochSecond());
 
         LocalDateTime localDateTime = LocalDateTime.now();
 
-        System.out.println("format data:"+DateUtil.format(beginOfDay,"yyMMdd"));
+        System.out.println("format data:" + DateUtil.format(beginOfDay, "yyMMdd"));
 
     }
 }

@@ -15,6 +15,5 @@ public class jsonObj {
         itemJSONObj = JSONObject.parseObject(JSON.toJSONString(itemMap));
 
 
-
     }
 }

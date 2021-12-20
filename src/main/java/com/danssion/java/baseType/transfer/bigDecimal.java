@@ -30,11 +30,11 @@ public class bigDecimal {
 //        BigDecimal bnull = new BigDecimal(null);
         BigDecimal bnull = null;
 
-        System.out.println("bigdecimal 111 vs 110 :"+bd.compareTo(b1));
-        System.out.println("bigdecimal 111 vs 112 :"+bd.compareTo(b2));
-        System.out.println("bigdecimal 111 vs null :"+bd.compareTo(bnull));
+        System.out.println("bigdecimal 111 vs 110 :" + bd.compareTo(b1));
+        System.out.println("bigdecimal 111 vs 112 :" + bd.compareTo(b2));
+        System.out.println("bigdecimal 111 vs null :" + bd.compareTo(bnull));
         // xception in thread "main" java.lang.NullPointerException
-        System.out.println("bigdecimal 111 vs null :"+bd.compareTo(null));
+        System.out.println("bigdecimal 111 vs null :" + bd.compareTo(null));
 
     }
 
@@ -42,7 +42,7 @@ public class bigDecimal {
         BigDecimal b = new BigDecimal("1213.65127635");
         Integer i = b.intValue();
         System.out.println(i);
-        if(b.intValue() > 0 ) {
+        if (b.intValue() > 0) {
             System.out.println(b);
         }
         b.setScale(2, RoundingMode.HALF_UP);
@@ -53,13 +53,13 @@ public class bigDecimal {
         System.out.println(d);
 
         BigDecimal bi = new BigDecimal("0.123");
-        BigDecimal mu = new BigDecimal(100) ;
+        BigDecimal mu = new BigDecimal(100);
         System.out.println(bi.multiply(mu).setScale(2).stripTrailingZeros());
     }
 
     public static void stringToBigDec() {
-        String str1="2.30";
-        BigDecimal bd=new BigDecimal(str1);
+        String str1 = "2.30";
+        BigDecimal bd = new BigDecimal(str1);
         System.out.println(bd);
 
 
@@ -67,13 +67,13 @@ public class bigDecimal {
          *设置BigDecimal的小数位数的方法
          */
 //        数字字符串
-        String StrBd="1048576.1024";
+        String StrBd = "1048576.1024";
 //构造以字符串内容为值的BigDecimal类型的变量bd
-        BigDecimal bd1 =new BigDecimal(StrBd);
+        BigDecimal bd1 = new BigDecimal(StrBd);
 //设置小数位数，第一个变量是小数位数，第二个变量是取舍方法(四舍五入)
         bd1 = bd1.setScale(2, BigDecimal.ROUND_HALF_UP);
 //转化为字符串输出
-        String OutString=bd1.toString();
+        String OutString = bd1.toString();
 
         System.out.println(BigDecimal.valueOf(new Double(null)));
 
@@ -100,13 +100,13 @@ public class bigDecimal {
 
     public static void BigToStringWithoutScientific() {
         BigDecimal b1 = new BigDecimal(1000000000);
-        System.out.println(b1+" -> "+formatPairPrice(b1));
+        System.out.println(b1 + " -> " + formatPairPrice(b1));
 
         BigDecimal b2 = new BigDecimal(0.000001234);
-        System.out.println(b2+" -> "+formatPairPrice(b2));
+        System.out.println(b2 + " -> " + formatPairPrice(b2));
 
         BigDecimal b3 = new BigDecimal(0.0000001234);
-        System.out.println(b3+" -> "+formatPairPrice(b3));
+        System.out.println(b3 + " -> " + formatPairPrice(b3));
     }
 
     public static String formatPairPrice(BigDecimal value) {
@@ -125,7 +125,7 @@ public class bigDecimal {
         }
         String valueFormat = nf.format(value.doubleValue());
 
-        return  valueFormat;
+        return valueFormat;
     }
 
 }

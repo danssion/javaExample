@@ -12,6 +12,7 @@
 
 
 package com.danssion.java.network.halfclose;
+
 import java.io.*;
 import java.net.*;
 import java.util.*;
@@ -19,8 +20,7 @@ import java.util.*;
 
 public class Server {
     public static void main(String[] args)
-            throws Exception
-    {
+            throws Exception {
         ServerSocket ss = new ServerSocket(30000);
         Socket socket = ss.accept();
         PrintStream ps = new PrintStream(socket.getOutputStream());
@@ -33,8 +33,7 @@ public class Server {
         // 下面语句将输出false，表明socket还未关闭。
         System.out.println(socket.isClosed());
         Scanner scan = new Scanner(socket.getInputStream());
-        while (scan.hasNextLine())
-        {
+        while (scan.hasNextLine()) {
             System.out.println(scan.nextLine());
         }
         scan.close();

@@ -19,12 +19,10 @@ import java.util.*;
 
 public class Client {
     public static void main(String[] args)
-            throws Exception
-    {
-        Socket s = new Socket("localhost" , 30000);
+            throws Exception {
+        Socket s = new Socket("localhost", 30000);
         Scanner scan = new Scanner(s.getInputStream());
-        while (scan.hasNextLine())
-        {
+        while (scan.hasNextLine()) {
             System.out.println(scan.nextLine());
         }
         PrintStream ps = new PrintStream(s.getOutputStream());

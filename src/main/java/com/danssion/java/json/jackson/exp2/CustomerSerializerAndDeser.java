@@ -11,25 +11,24 @@ import java.util.Date;
  * @version 1.0
  * @date 2020/8/27 20:39
  * @desc JavaExample-DdsignPattern
- *
+ * <p>
  * 自定义的序列化类需要直接或间接继承 StdSerializer 或 JsonSerializer，
  * 同时需要利用 JsonGenerator 生成 json，重写方法 serialize
- *
+ * <p>
  * JsonGenerator 有多种 write 方法以支持生成复杂的类型的 json，
  * 比如 writeArray，writeTree 等 。若想单独创建 JsonGenerator，可以通过 JsonFactory() 的 createGenerator
- *
+ * <p>
  * 定义反序列化类：自定义的反序列化类需要直接或间接继承 StdDeserializer 或 StdDeserializer，
  * 同时需要利用 JsonParser 读取 json，重写方法 deserialize
- *
+ * <p>
  * JsonParser 提供很多方法来读取 json 信息， 如 isClosed(), nextToken(), getValueAsString()等。
  * 若想单独创建 JsonParser，可以通过 JsonFactory() 的 createParser
- *
+ * <p>
  * 定义好自定义序列化类和自定义反序列化类，若想在程序中调用它们，还需要注册到 ObjectMapper 的 Module
  * or
  * 或者也可通过注解方式加在 java 对象的属性，方法或类上面来调用它们：
  * @JsonSerialize(using = CustomSerializer.class)
  * @JsonDeserialize(using = CustomDeserializer.class)
- *
  */
 public class CustomerSerializerAndDeser {
     public static void main(String[] args) {

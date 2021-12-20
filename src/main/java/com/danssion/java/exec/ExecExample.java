@@ -18,15 +18,15 @@ public class ExecExample {
 
 //        " https://api.mailgun.net/v3/mg.mytokenmsg.com/messages  -F from='no-reply<no-reply@mg.mytokenmsg.com>'  -F to=duanxiang@haodelian.com  -F to=dev@haodelian.com -F subject='Hello' -F text='Testing some Mailgun awesomeness!",
 //        "-F","from='no-reply<no-reply@mg.mytokenmsg.com>'",
-        "-F","to=duanxiang@haodelian.com",
+                "-F", "to=duanxiang@haodelian.com",
 //        "-F to=dev@haodelian.com",
-        "-F","subject='Hello' ",
-        "--form-string","text='Testing some Mailgun heeeellllllooooo!'",
-                "--form-string","html='<html>Inline image here: <img src=\"cid:cartman.jpg\"></html>'",
+                "-F", "subject='Hello' ",
+                "--form-string", "text='Testing some Mailgun heeeellllllooooo!'",
+                "--form-string", "html='<html>Inline image here: <img src=\"cid:cartman.jpg\"></html>'",
 //                " https://api.mailgun.net/v3/mg.mytokenmsg.com/messages ",
-               "--form-string", "from=no-reply@mg.mytokenmsg.com",
+                "--form-string", "from=no-reply@mg.mytokenmsg.com",
 //               "--form-string ", "to=duanxiang@haodelian.com","  --form-string to=dev@haodelian.com --form-string subject='Hello' --form-string text='Testing some Mailgun awesomeness!'",
-               "https://api.mailgun.net/v3/mg.mytokenmsg.com/messages",
+                "https://api.mailgun.net/v3/mg.mytokenmsg.com/messages",
         };
 
         ProcessBuilder process = new ProcessBuilder(cmds);
@@ -73,7 +73,7 @@ public class ExecExample {
             Process p = Runtime.getRuntime().exec("curl -s --user api:14dc5c76561c54e45e6435edff5cc884" +
                     " https://api.mailgun.net/v3/mg.mytokenmsg.com/messages  " +
                     "--form-string from=no-reply@mg.mytokenmsg.com  --form-string to=duanxiang@haodelian.com  --form-string to=dev@haodelian.com --form-string subject=Hello " +
-                    "--form-string html='<html>Inline image here: <img src=\"cid:cartman.jpg\"></html>'"+
+                    "--form-string html='<html>Inline image here: <img src=\"cid:cartman.jpg\"></html>'" +
                     "--form-string text='Testing some Mailgun awesomeness!'"
             );
 
@@ -96,8 +96,7 @@ public class ExecExample {
             }
 
             System.exit(0);
-        }
-        catch (IOException e) {
+        } catch (IOException e) {
             System.out.println("exception happened - here's what I know: ");
             e.printStackTrace();
             System.exit(-1);

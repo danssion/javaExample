@@ -20,52 +20,52 @@ public class User implements java.io.Serializable {
 
     private GENDER gender;
 
-    public Date getBirthday(){
+    public Date getBirthday() {
         return birthday;
     }
 
-    public void setBirthday(Date birthday){
+    public void setBirthday(Date birthday) {
         this.birthday = birthday;
     }
 
     @JsonValue
-    public GENDER getGender(){
+    public GENDER getGender() {
         return gender;
     }
 
-    public void setGender(GENDER gender){
+    public void setGender(GENDER gender) {
         this.gender = gender;
     }
 
-    public User(){
+    public User() {
     }
 
-    public String getName(){
+    public String getName() {
         return name;
     }
 
-    public void setName(String name){
+    public void setName(String name) {
         this.name = name;
     }
 
-    public int getAge(){
+    public int getAge() {
         return age;
     }
 
-    public void setAge(int age){
+    public void setAge(int age) {
         this.age = age;
     }
 
-    public Date getBirthday_custom(){
+    public Date getBirthday_custom() {
         return birthday_custom;
     }
 
-    public void setBirthday_custom(Date birthday_custom){
+    public void setBirthday_custom(Date birthday_custom) {
         this.birthday_custom = birthday_custom;
     }
 
     @Override
-    public String toString(){
+    public String toString() {
         return "User{" +
                 "name='" + name + '\'' +
                 ", age=" + age +

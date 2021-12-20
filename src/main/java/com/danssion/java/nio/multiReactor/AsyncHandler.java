@@ -39,9 +39,9 @@ public class AsyncHandler implements Runnable {
     public void run() {
         try {
             //判断事件类型
-            if(sk.isReadable()) {
+            if (sk.isReadable()) {
                 this.read();
-            } else if(sk.isWritable()) {
+            } else if (sk.isWritable()) {
                 this.write();
             }
         } catch (Exception e) {
@@ -54,15 +54,15 @@ public class AsyncHandler implements Runnable {
         //避免多个连接的影响
         inputBuffer.clear();
         int n = channel.read(inputBuffer);
-        if(inputBufferCompleted(n)) { //如果读取完了
-            System.out.println(Thread.currentThread().getName()+": Server 收到请求消息： "+stringBuilder.toString());
+        if (inputBufferCompleted(n)) { //如果读取完了
+            System.out.println(Thread.currentThread().getName() + ": Server 收到请求消息： " + stringBuilder.toString());
             outputBuffer.put(stringBuilder.toString().getBytes(StandardCharsets.UTF_8));
             this.sk.interestOps(SelectionKey.OP_WRITE);
         }
     }
 
     private boolean inputBufferCompleted(int by) throws EOFException {
-        if(by > 0) {
+        if (by > 0) {
             inputBuffer.flip();
             //判断缓存区是否还有元素
             while (inputBuffer.hasRemaining()) {
@@ -72,15 +72,15 @@ public class AsyncHandler implements Runnable {
                 //3
                 //ETX (end of text)
                 //正文结束
-                if(ch == 3) { // 表示 Ctrl + C
+                if (ch == 3) { // 表示 Ctrl + C
                     throw new EOFException();
-                } else if (ch == '\r' ||ch == '\n') { //是一个换行的情况下
+                } else if (ch == '\r' || ch == '\n') { //是一个换行的情况下
                     return true;
                 } else {
-                    stringBuilder.append((char)ch);
+                    stringBuilder.append((char) ch);
                 }
             }
-        } else if(by == 1) {//客户端关闭连接
+        } else if (by == 1) {//客户端关闭连接
             throw new EOFException();
         }
         return false;
@@ -89,14 +89,14 @@ public class AsyncHandler implements Runnable {
     private void write() throws IOException {
         int write = -1;
         outputBuffer.flip();
-        if(outputBuffer.hasRemaining()) {
+        if (outputBuffer.hasRemaining()) {
             write = channel.write(outputBuffer);//收到的数据写回客户端
         }
 
         outputBuffer.clear();
         //清空数据
-        stringBuilder.delete(0,stringBuilder.length());
-        if(write <= 0) {
+        stringBuilder.delete(0, stringBuilder.length());
+        if (write <= 0) {
             this.sk.channel().close();
         } else {
             channel.write(ByteBuffer.wrap("\r\nreactor>".getBytes()));

@@ -6,19 +6,16 @@ import java.io.Serializable;
  * @author danssion danssion@sina.com
  * @version 1.0
  * @date 2020/7/14 00:51
- * @desc
- *
- * 1）添加一个默认版本的序列化 ID：
+ * @desc 1）添加一个默认版本的序列化 ID：
  * private static final long serialVersionUID = 1L。
- *
+ * <p>
  * 2）添加一个随机生成的不重复的序列化 ID。
  * private static final long serialVersionUID = -2095916884810199532L;
- *
+ * <p>
  * 3）添加 @SuppressWarnings 注解。
  * @SuppressWarnings("serial")
  */
-public class Wanger implements Serializable
-{
+public class Wanger implements Serializable {
     private String name;
     private int age;
 

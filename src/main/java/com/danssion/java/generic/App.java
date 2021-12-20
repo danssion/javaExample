@@ -13,11 +13,10 @@
 
 package com.danssion.java.generic;
 
-public class App<T extends Number>
-{
+public class App<T extends Number> {
     T col;
-    public static void main(String[] args)
-    {
+
+    public static void main(String[] args) {
         App<Integer> ai = new App<>();
         App<Double> ad = new App<>();
         // 下面代码将引起编译异常，下面代码试图把String类型传给T形参

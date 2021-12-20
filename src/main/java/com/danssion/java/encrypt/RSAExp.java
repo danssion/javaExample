@@ -37,7 +37,7 @@ public class RSAExp {
         jdkRSA();
     }
 
-    public static void jdkRSA(){
+    public static void jdkRSA() {
         try {
             //===============生成公钥和私钥，公钥传给客户端，私钥服务端保留==================
             String publicKeyStr = base64PublicKey;
@@ -71,7 +71,7 @@ public class RSAExp {
 
     }
 
-    public static void generateKey(){
+    public static void generateKey() {
         //生成RSA公钥和私钥，并Base64编码
         KeyPair keyPair = null;
         try {
@@ -84,7 +84,6 @@ public class RSAExp {
         System.out.println("RSA公钥Base64编码:" + publicKeyStr);
         System.out.println("RSA私钥Base64编码:" + privateKeyStr);
     }
-
 
 
 }

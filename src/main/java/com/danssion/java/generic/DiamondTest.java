@@ -27,13 +27,13 @@ public class DiamondTest {
         books.forEach(el -> System.out.println(el.length()));
 
         // Java自动推断出HashMap的<>里应该是String , List<String>
-        Map<String , List<String>> schoolsInfo = new HashMap<>();
+        Map<String, List<String>> schoolsInfo = new HashMap<>();
         // Java自动推断出ArrayList的<>里应该是String
         List<String> schools = new ArrayList<>();
         schools.add("斜月三星洞");
         schools.add("西天取经路");
-        schoolsInfo.put("孙悟空" , schools);
+        schoolsInfo.put("孙悟空", schools);
         // 遍历Map时，Map的key是String类型，value是List<String>类型
-        schoolsInfo.forEach((key , value) -> System.out.println(key + "-->" + value));
+        schoolsInfo.forEach((key, value) -> System.out.println(key + "-->" + value));
     }
 }

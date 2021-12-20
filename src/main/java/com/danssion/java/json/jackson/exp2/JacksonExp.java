@@ -68,7 +68,7 @@ public class JacksonExp {
         System.out.println("序列化");
         String jsonString = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(person);
         System.out.println(jsonString);
-        System.out.println("not writerWithDefaultPrettyPrinter "+mapper.writeValueAsString(person));
+        System.out.println("not writerWithDefaultPrettyPrinter " + mapper.writeValueAsString(person));
         System.out.println("反序列化");
         Person deserializedPerson = mapper.readValue(jsonString, Person.class);
         System.out.println(deserializedPerson);
@@ -117,7 +117,6 @@ public class JacksonExp {
 
     /**
      * @desc 对于日期类型为 java.time.LocalDate, java.time.LocalDateTime
-     *
      */
     public static void withTheDate() throws IOException {
         ObjectMapper mapper = new ObjectMapper();
@@ -134,6 +133,7 @@ public class JacksonExp {
         Student deserializedPerson = mapper.readValue(jsonString, Student.class);
         System.out.println(deserializedPerson);
     }
+
     private static Module JavaTimeModule() {
         JavaTimeModule module = new JavaTimeModule();
         String DATE_TIME_FORMAT = "yyyy-MM-dd HH:mm:ss";
@@ -205,13 +205,11 @@ public class JacksonExp {
     }
 
     /**
-     * @desc
-     * JackSon 默认不是所有的属性都可以被序列化和反序列化。默认的属性可视化的规则如下：
+     * @throws IOException
+     * @desc JackSon 默认不是所有的属性都可以被序列化和反序列化。默认的属性可视化的规则如下：
      * 若该属性修饰符是 public，该属性可序列化和反序列化。
      * 若属性的修饰符不是 public，但是它的 getter 方法和 setter 方法是 public，该属性可序列化和反序列化。因为 getter 方法用于序列化， 而 setter 方法用于反序列化。
      * 若属性只有 public 的 setter 方法，而无 public 的 getter 方 法，该属性只能用于反序列化。
-     *
-     * @throws IOException
      */
     public static void withVisibility() throws IOException {
         ObjectMapper mapper = new ObjectMapper();
@@ -235,8 +233,8 @@ public class JacksonExp {
     }
 
     /**
-     * @desc 将 Java 对象序列化为 json 时 ，有些属性需要过滤掉，不显示在 json 中
      * @throws JsonProcessingException
+     * @desc 将 Java 对象序列化为 json 时 ，有些属性需要过滤掉，不显示在 json 中
      */
     public static void filterParams() throws JsonProcessingException {
         ObjectMapper mapper = new ObjectMapper();
@@ -268,11 +266,10 @@ public class JacksonExp {
     }
 
     /**
+     * @throws IOException
      * @desc Jackson 也提供了树模型(tree model)来生成和解析 json。
      * 若想修改或访问 json 部分属性，树模型是不错的选择。
      * 树模型由 JsonNode 节点组成。程序中常常使用 ObjectNode，ObjectNode 继承于 JsonNode
-     *
-     * @throws IOException
      */
     public static void treeModel() throws IOException {
         ObjectMapper mapper = new ObjectMapper();

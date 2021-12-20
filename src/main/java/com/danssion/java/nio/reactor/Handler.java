@@ -21,7 +21,7 @@ public class Handler implements Runnable {
 
     @Override
     public void run() {
-        System.out.println(Thread.currentThread().getName()+"------");
+        System.out.println(Thread.currentThread().getName() + "------");
         ByteBuffer byteBuffer = ByteBuffer.allocate(1024);
         /** 如果一个Handler 出现阻塞了，整个系统阻塞 **/
 //        try {
@@ -30,18 +30,18 @@ public class Handler implements Runnable {
 //            e.printStackTrace();
 //        }
 
-        int len=0,total=0;
+        int len = 0, total = 0;
         String msg = "";
         try {
             do {
                 len = channel.read(byteBuffer);
-                if(len > 0) {
+                if (len > 0) {
                     total += len;
                     msg += new String(byteBuffer.array());
                 }
             } while (len > byteBuffer.capacity());
-            System.out.println("total:"+total);
-            System.out.println(channel.getRemoteAddress()+": Server receive msg:"+msg);
+            System.out.println("total:" + total);
+            System.out.println(channel.getRemoteAddress() + ": Server receive msg:" + msg);
             //后续处理数据，比如：msg=通讯报文
             //登录信息
             //ServerRequest username   password
@@ -51,7 +51,7 @@ public class Handler implements Runnable {
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            if(channel != null) {
+            if (channel != null) {
                 try {
                     channel.close();
                 } catch (IOException e) {
@@ -59,7 +59,6 @@ public class Handler implements Runnable {
                 }
             }
         }
-
 
 
     }

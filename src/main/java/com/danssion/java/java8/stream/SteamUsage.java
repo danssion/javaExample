@@ -21,17 +21,20 @@ public class SteamUsage {
     }
 
     private static List<Person> list = new ArrayList<>();
-    static {
-        list.add(new Person("Jam",21));
-        list.add(new Person("James",19,true));
-        list.add(new Person("Lesha",21,true));
-        list.add(new Person("Minu Very ",21,true));
-        list.add(new Person("Tom Sweet",36));
-        list.add(new Person("Jack Very",64,1));
-        list.add(new Person("Lily Dubble",11,1));
-        list.add(new Person("Candy Sweet",17,2));
 
-    };
+    static {
+        list.add(new Person("Jam", 21));
+        list.add(new Person("James", 19, true));
+        list.add(new Person("Lesha", 21, true));
+        list.add(new Person("Minu Very ", 21, true));
+        list.add(new Person("Tom Sweet", 36));
+        list.add(new Person("Jack Very", 64, 1));
+        list.add(new Person("Lily Dubble", 11, 1));
+        list.add(new Person("Candy Sweet", 17, 2));
+
+    }
+
+    ;
 
     private void useApi() {
         System.out.println("use filer isStudent = true: ");
@@ -67,16 +70,16 @@ public class SteamUsage {
 
     public void sort() {
         //自然序列
-        List<Person> personList1=list.stream().sorted().collect(Collectors.toList());
+        List<Person> personList1 = list.stream().sorted().collect(Collectors.toList());
         //逆序
-        List<Person> personList2=list.stream().sorted(Comparator.reverseOrder()).collect(Collectors.toList());
+        List<Person> personList2 = list.stream().sorted(Comparator.reverseOrder()).collect(Collectors.toList());
 
         //根据年龄自然顺序
-        List<Person> personList3=list.stream().sorted(Comparator.comparing(Person::getAge)).collect(Collectors.toList());
+        List<Person> personList3 = list.stream().sorted(Comparator.comparing(Person::getAge)).collect(Collectors.toList());
         //根据年龄逆序
-        List<Person> personList4=list.stream().sorted(Comparator.comparing(Person::getAge).reversed()).collect(Collectors.toList());
+        List<Person> personList4 = list.stream().sorted(Comparator.comparing(Person::getAge).reversed()).collect(Collectors.toList());
 
-        personList4.forEach(p -> System.out.println("sex is "+p.getSex()+" ;name is "+p.getName()+";age is "+p.getAge()));
+        personList4.forEach(p -> System.out.println("sex is " + p.getSex() + " ;name is " + p.getName() + ";age is " + p.getAge()));
     }
 
     public void useReduce() {
@@ -87,48 +90,47 @@ public class SteamUsage {
         list.stream().mapToInt(Person::getAge).sum();
 
 
-
         OptionalLong minage1 = list.stream().mapToLong(Person::getAge).min();
         OptionalInt maxage = list.stream().mapToInt(Person::getAge).max();
 
-        System.out.println("max age:" + maxage.getAsInt()+"  min age:"+minage1.getAsLong());
+        System.out.println("max age:" + maxage.getAsInt() + "  min age:" + minage1.getAsLong());
 
 
         long count1 = list.stream().collect(counting());
         long count2 = list.stream().count();
-        System.out.println("Collectors.counting() : "+count1+" stream.count() :"+count2);
+        System.out.println("Collectors.counting() : " + count1 + " stream.count() :" + count2);
 
         OptionalDouble avg1 = list.stream().mapToInt(Person::getAge).average();
 
-        System.out.println("mapToInt average:"+avg1.getAsDouble());
+        System.out.println("mapToInt average:" + avg1.getAsDouble());
 
     }
 
     public void useCollect() {
         Integer sumAge = list.stream().
-                collect(Collectors.reducing(0,Person::getAge,(i,j)->i+j) );
-        System.out.println("collect sumAge : "+sumAge);
+                collect(Collectors.reducing(0, Person::getAge, (i, j) -> i + j));
+        System.out.println("collect sumAge : " + sumAge);
 
         Optional<Person> oldp = list.stream().collect(Collectors.maxBy(Comparator.comparingInt(Person::getAge)));
-        System.out.println("max age person:"+oldp.get());
+        System.out.println("max age person:" + oldp.get());
 
         double avg2 = list.stream().collect(Collectors.averagingInt(Person::getAge));
 
-        System.out.println(" colloct avg:"+avg2);
+        System.out.println(" colloct avg:" + avg2);
 
         long count1 = list.stream().collect(counting());
         long count2 = list.stream().count();
-        System.out.println("Collectors.counting() : "+count1+" stream.count() :"+count2);
+        System.out.println("Collectors.counting() : " + count1 + " stream.count() :" + count2);
 
         IntSummaryStatistics all = list.stream().collect(Collectors.summarizingInt(Person::getAge));
-        System.out.println("all statics:"+all);
+        System.out.println("all statics:" + all);
 
 //        统计每一组的人数
-        Map<String,Long> result = list.stream().collect(
-                Collectors.groupingBy((person)->{
-                            if(person.getAge()>60)
+        Map<String, Long> result = list.stream().collect(
+                Collectors.groupingBy((person) -> {
+                            if (person.getAge() > 60)
                                 return "老年人";
-                            else if(person.getAge()>40)
+                            else if (person.getAge() > 40)
                                 return "中年人";
                             else
                                 return "青年人";

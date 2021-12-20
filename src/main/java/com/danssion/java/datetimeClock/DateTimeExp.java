@@ -26,7 +26,7 @@ import java.util.Locale;
 
 public class DateTimeExp {
     public static void main(String[] args) {
-        DateTimeExp dateTimeExp =  new DateTimeExp();
+        DateTimeExp dateTimeExp = new DateTimeExp();
         dateTimeExp.timestampTest();
 //        dateTimeExp.localtime();
 //        dateTimeExp.zone();
@@ -40,12 +40,12 @@ public class DateTimeExp {
         ZoneId zone2 = ZoneId.of("Brazil/East");
         LocalTime now1 = LocalTime.now(zone1);
         LocalTime now2 = LocalTime.now(zone2);
-        System.out.println("时区：Europe/Berlin---"+now1);
-        System.out.println("时区：Brazil/East---"+now2);
+        System.out.println("时区：Europe/Berlin---" + now1);
+        System.out.println("时区：Brazil/East---" + now2);
 
         ZoneId zoneId0 = ZoneId.systemDefault();
         LocalTime now0 = LocalTime.now(zoneId0);
-        System.out.println(zoneId0+" "+now0);
+        System.out.println(zoneId0 + " " + now0);
     }
 
     private void timestampTest() {
@@ -56,11 +56,11 @@ public class DateTimeExp {
 
         Instant ins = Instant.now();
         System.out.println(ins);
-        System.out.println("instant sec:"+ins.getEpochSecond());
+        System.out.println("instant sec:" + ins.getEpochSecond());
         Instant ins1 = LocalDateTime.now().toInstant(ZoneOffset.of("+8"));
-        System.out.println("LocalDateTime  zoneoffset +8 sec:"+ins1.getEpochSecond());
+        System.out.println("LocalDateTime  zoneoffset +8 sec:" + ins1.getEpochSecond());
         System.out.println(ins1);
-        System.out.println("LocalDateTime  zoneoffset +0 sec:"+LocalDateTime.now().toInstant(ZoneOffset.UTC).getEpochSecond());
+        System.out.println("LocalDateTime  zoneoffset +0 sec:" + LocalDateTime.now().toInstant(ZoneOffset.UTC).getEpochSecond());
         System.out.println(LocalDateTime.now());
         System.out.println(LocalDateTime.now().getHour());
         LocalDateTime.now().atZone(Clock.systemDefaultZone().getZone());
@@ -69,17 +69,17 @@ public class DateTimeExp {
     private void localtime() {
 
         Clock clock1 = Clock.systemDefaultZone();//获取系统默认时区 (当前瞬时时间 )
-        System.out.println( "系统时间日期："+clock1.instant() );
-        System.out.println( "时间毫秒："+clock1.millis() );
+        System.out.println("系统时间日期：" + clock1.instant());
+        System.out.println("时间毫秒：" + clock1.millis());
 
         ZoneId zoneId = Clock.systemDefaultZone().getZone();
 
-        System.out.println(" 系统时间 zone: "+zoneId);
+        System.out.println(" 系统时间 zone: " + zoneId);
 
 
         final Clock clock = Clock.systemUTC();//获取系统时钟，并将其转换成使用UTC时区的日期和时间
-        System.out.println( "时间日期："+clock.instant() );
-        System.out.println( "时间毫秒值："+clock.millis() );
+        System.out.println("时间日期：" + clock.instant());
+        System.out.println("时间毫秒值：" + clock.millis());
 
         LocalTime late = LocalTime.of(22, 12, 18);//时分秒
         System.out.println(late); // 输出结果：22:12:18
@@ -90,44 +90,44 @@ public class DateTimeExp {
         LocalTime leetTime = LocalTime.parse("15:39", germanFormatter);
         System.out.println(leetTime);
 
-        Date date =  new Date(2020,06,19);
+        Date date = new Date(2020, 06, 19);
         date.toInstant().getEpochSecond();
-        System.out.println("date:"+date.toString());
-        System.out.println("date 2020-06-19 get timestamp: "+date.toInstant().getEpochSecond());
+        System.out.println("date:" + date.toString());
+        System.out.println("date 2020-06-19 get timestamp: " + date.toInstant().getEpochSecond());
 
         final LocalTime time = LocalTime.now();
         Clock utcclock = Clock.systemUTC();
-        final LocalTime timeFromClock = LocalTime.now( utcclock );
-        System.out.println("LocalTime.now :" +time );
-        System.out.println("LocalTime.now utcclock " + timeFromClock );
+        final LocalTime timeFromClock = LocalTime.now(utcclock);
+        System.out.println("LocalTime.now :" + time);
+        System.out.println("LocalTime.now utcclock " + timeFromClock);
 
         Clock newc = Clock.systemDefaultZone();
         final LocalTime defaultZone = LocalTime.now(newc);
         LocalDateTime localDateTime = LocalDateTime.now(newc);
-        System.out.println("LocalTime.now defaultZone " + defaultZone + " clock :"+newc);
+        System.out.println("LocalTime.now defaultZone " + defaultZone + " clock :" + newc);
         ZoneId.systemDefault();
         ZoneOffset.systemDefault().getId();
-        System.out.println("ZoneOffset.systemDefault():"+ZoneOffset.systemDefault()+" ZoneOffset.systemDefault().getId(): "+
+        System.out.println("ZoneOffset.systemDefault():" + ZoneOffset.systemDefault() + " ZoneOffset.systemDefault().getId(): " +
                 ZoneOffset.systemDefault().getId());
-        System.out.println("LocalTime.now timestamp "+  localDateTime.toEpochSecond(ZoneOffset.of("+8")));
+        System.out.println("LocalTime.now timestamp " + localDateTime.toEpochSecond(ZoneOffset.of("+8")));
         // 设置时区
 //        ZonedDateTime zonedDateTime = LocalDate.now().atStartOfDay(ZoneId.systemDefault());
         ZonedDateTime zonedDateTime = localDateTime.atZone(ZoneId.systemDefault());
         zonedDateTime.getOffset();
-        System.out.println("LocalTime.now timestamp by zonedDateTime.getOffset() "+
+        System.out.println("LocalTime.now timestamp by zonedDateTime.getOffset() " +
                 localDateTime.toEpochSecond(zonedDateTime.getOffset()));
 
-        System.out.println("LocalTime.now timestamp by new Date().getTime()"+
-                new Date().getTime() );
+        System.out.println("LocalTime.now timestamp by new Date().getTime()" +
+                new Date().getTime());
 
         System.currentTimeMillis();
 
         //初始化Timestamp，需要注意构造方法的入参是一个时间戳
-        Timestamp timestamp=new Timestamp(System.currentTimeMillis()/1000);
+        Timestamp timestamp = new Timestamp(System.currentTimeMillis() / 1000);
 //获取Timestamp对象对应的时间戳
-        System.out.println("LocalTime.now timestamp by timestamp.getTime()"+timestamp.getTime());
+        System.out.println("LocalTime.now timestamp by timestamp.getTime()" + timestamp.getTime());
 
-        System.out.println("timestamp : Instant.now().getEpochSecond():"+Instant.now().getEpochSecond());
+        System.out.println("timestamp : Instant.now().getEpochSecond():" + Instant.now().getEpochSecond());
 
     }
 
@@ -135,19 +135,19 @@ public class DateTimeExp {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM dd, yyyy - HH:mm");
         LocalDateTime parsed = LocalDateTime.parse("05 03, 2016 - 07:13", formatter);
         String string = formatter.format(parsed);
-        System.out.println(" 05 03, 2016 - 07:13  "+ string);
+        System.out.println(" 05 03, 2016 - 07:13  " + string);
 
 
         LocalDateTime localDateTime = LocalDateTime.now();
-        System.out.println("localdatatime :"+localDateTime.toString()+"  |  h: +"+localDateTime.getHour()+
-                "+ m : "+localDateTime.getMinute());
+        System.out.println("localdatatime :" + localDateTime.toString() + "  |  h: +" + localDateTime.getHour() +
+                "+ m : " + localDateTime.getMinute());
         System.out.println(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss").format(localDateTime));
         DateTimeFormatter fm = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSS");
-        LocalDateTime pd = LocalDateTime.parse(localDateTime.toString(),fm);
+        LocalDateTime pd = LocalDateTime.parse(localDateTime.toString(), fm);
         DateTimeFormatter toFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
         String str = toFormatter.format(pd);
-        System.out.println(toFormatter.toString()+ " yyyy-MM-dd HH:mm:ss  ->  "+ str);
+        System.out.println(toFormatter.toString() + " yyyy-MM-dd HH:mm:ss  ->  " + str);
 
     }
 

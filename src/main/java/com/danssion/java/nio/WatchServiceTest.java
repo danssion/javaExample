@@ -19,8 +19,7 @@ import java.nio.file.attribute.*;
 
 public class WatchServiceTest {
     public static void main(String[] args)
-            throws Exception
-    {
+            throws Exception {
         // 获取文件系统的WatchService对象
         WatchService watchService = FileSystems.getDefault()
                 .newWatchService();
@@ -29,20 +28,17 @@ public class WatchServiceTest {
                 , StandardWatchEventKinds.ENTRY_CREATE
                 , StandardWatchEventKinds.ENTRY_MODIFY
                 , StandardWatchEventKinds.ENTRY_DELETE);
-        while(true)
-        {
+        while (true) {
             // 获取下一个文件改动事件
             WatchKey key = watchService.take();    //①
-            for (WatchEvent<?> event : key.pollEvents())
-            {
-                System.out.println(event.context() +" 文件发生了 "
-                        + event.kind()+ "事件！");
+            for (WatchEvent<?> event : key.pollEvents()) {
+                System.out.println(event.context() + " 文件发生了 "
+                        + event.kind() + "事件！");
             }
             // 重设WatchKey
             boolean valid = key.reset();
             // 如果重设失败，退出监听
-            if (!valid)
-            {
+            if (!valid) {
                 break;
             }
         }

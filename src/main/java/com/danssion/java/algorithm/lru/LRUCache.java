@@ -9,7 +9,7 @@ public class LRUCache {
     private Node head;
     private Node tail;
 
-    private final HashMap<String,Node> nodeHashMap;
+    private final HashMap<String, Node> nodeHashMap;
     private int capacity;
 
     public LRUCache(int capacity) {
@@ -24,7 +24,7 @@ public class LRUCache {
     //当前Key 的数据被访问了
     public String get(String key) {
         Node node = nodeHashMap.get(key);
-        if(node == null) {
+        if (node == null) {
             return null;
         }
         //刷新Key 的位置
@@ -33,20 +33,20 @@ public class LRUCache {
     }
 
     /**
-     * @desc 如果存在，触发点击，更新位置
      * @param key
      * @param value
+     * @desc 如果存在，触发点击，更新位置
      */
-    public void put(String key,String value) {
+    public void put(String key, String value) {
         Node node = nodeHashMap.get(key);
-        if(node == null) {
+        if (node == null) {
             //大于容量，则需要移除数据
-            if(nodeHashMap.size() >= capacity) {
+            if (nodeHashMap.size() >= capacity) {
                 removeNode(tail);//移除尾部节点
                 nodeHashMap.remove(tail.key);//从hashmap 移除 key
             }
-            node = new Node(key,value);
-            nodeHashMap.put(key,node);
+            node = new Node(key, value);
+            nodeHashMap.put(key, node);
             addNodeToHead(node);
         } else {
             node.value = value;
@@ -55,11 +55,11 @@ public class LRUCache {
     }
 
     /**
-     * @desc 链表的节点删除
      * @param node
+     * @desc 链表的节点删除
      */
     private void removeNode(Node node) {
-        if(node == tail) {
+        if (node == tail) {
             tail = tail.prev;
             tail.next = null;
         } else if (node == head) {

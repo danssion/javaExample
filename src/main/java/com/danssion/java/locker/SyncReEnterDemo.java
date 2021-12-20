@@ -4,17 +4,16 @@ package com.danssion.java.locker;
  * @author danssion danssion@sina.com
  * @version 1.0
  * @date 2020/7/27 18:51
- * @desc  可重入锁，也叫递归锁。它有两层含义，
+ * @desc 可重入锁，也叫递归锁。它有两层含义，
  * 第一，当一个线程在外层函数得到可重入锁后，能直接递归地调用该函数，
  * 第二，同一线程在外层函数获得可重入锁后，内层函数可以直接获取该锁对应其它代码的控制权。
  * 之前我们提到的 synchronized 和 ReentrantLock 都是可重入锁
  */
 
 
-
 public class SyncReEnterDemo {
     public static void main(String[] args) {
-        SyncReEnter demo=new SyncReEnter();
+        SyncReEnter demo = new SyncReEnter();
         new Thread(demo).start();
         new Thread(demo).start();
     }
@@ -29,17 +28,20 @@ public class SyncReEnterDemo {
  */
 
 
-
-class SyncReEnter implements Runnable{
-    public synchronized void get(){
+class SyncReEnter implements Runnable {
+    public synchronized void get() {
         System.out.print(Thread.currentThread().getId() + " get \t");
         //在get方法里调用set
         set();
     }
-    public synchronized void set()
-    {System.out.print(Thread.currentThread().getId()+" set \t"); }
+
+    public synchronized void set() {
+        System.out.print(Thread.currentThread().getId() + " set \t");
+    }
 
     @Override
     public void run() //run方法里调用了get方法
-    { get();}
+    {
+        get();
+    }
 }

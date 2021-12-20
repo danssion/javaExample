@@ -91,18 +91,17 @@ public class NumberFormatExp {
         System.out.println(nf.format(21123.456));//￥21,123
         System.out.println(nf.format(13.456));//￥13
 
-        nf = NumberFormat.getCurrencyInstance(new Locale("vi","VN"));
+        nf = NumberFormat.getCurrencyInstance(new Locale("vi", "VN"));
         System.out.println(nf.format(21123.456));//21.123 đ
         System.out.println(nf.format(13.456));//13 đ
 
-        nf = NumberFormat.getCurrencyInstance(new Locale("in","ID"));
+        nf = NumberFormat.getCurrencyInstance(new Locale("in", "ID"));
         System.out.println(nf.format(21123.456));//Rp21.123,46
         System.out.println(nf.format(13.456));//Rp13,46
 
 
-
         Locale[] locales = Locale.getAvailableLocales();
-        for( Locale locale : locales ) {
+        for (Locale locale : locales) {
 //            System.out.print(locale.getDisplayCountry() + "=" + locale.getCountry());
 //            System.out.println("\t\t\t\t\t\t\t" + locale.getDisplayLanguage() + "=" + locale.getLanguage());
 

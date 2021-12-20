@@ -27,23 +27,21 @@ public class UdpClient {
     byte[] inBuff = new byte[DATA_LEN];
     // 以指定字节数组创建准备接受数据的DatagramPacket对象
     private DatagramPacket inPacket =
-            new DatagramPacket(inBuff , inBuff.length);
+            new DatagramPacket(inBuff, inBuff.length);
     // 定义一个用于发送的DatagramPacket对象
     private DatagramPacket outPacket = null;
-    public void init()throws IOException
-    {
-        try(
+
+    public void init() throws IOException {
+        try (
                 // 创建一个客户端DatagramSocket，使用随机端口
-                DatagramSocket socket = new DatagramSocket())
-        {
+                DatagramSocket socket = new DatagramSocket()) {
             // 初始化发送用的DatagramSocket，它包含一个长度为0的字节数组
-            outPacket = new DatagramPacket(new byte[0] , 0
-                    , InetAddress.getByName(DEST_IP) , DEST_PORT);
+            outPacket = new DatagramPacket(new byte[0], 0
+                    , InetAddress.getByName(DEST_IP), DEST_PORT);
             // 创建键盘输入流
             Scanner scan = new Scanner(System.in);
             // 不断读取键盘输入
-            while(scan.hasNextLine())
-            {
+            while (scan.hasNextLine()) {
                 // 将键盘输入的一行字符串转换字节数组
                 byte[] buff = scan.nextLine().getBytes();
                 // 设置发送用的DatagramPacket里的字节数据
@@ -52,14 +50,14 @@ public class UdpClient {
                 socket.send(outPacket);
                 // 读取Socket中的数据，读到的数据放在inPacket所封装的字节数组里。
                 socket.receive(inPacket);
-                System.out.println(new String(inBuff , 0
+                System.out.println(new String(inBuff, 0
                         , inPacket.getLength()));
             }
         }
     }
+
     public static void main(String[] args)
-            throws IOException
-    {
+            throws IOException {
         new UdpClient().init();
     }
 }

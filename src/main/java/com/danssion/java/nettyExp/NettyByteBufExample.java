@@ -13,7 +13,7 @@ public class NettyByteBufExample {
         //构建一个字符串
         StringBuilder stringBuilder = new StringBuilder();
         for (int i = 0; i < 40; i++) {
-            stringBuilder.append("-"+i);
+            stringBuilder.append("-" + i);
         }
         //写入数据
         buf.writeBytes(stringBuilder.toString().getBytes());
@@ -29,7 +29,7 @@ public class NettyByteBufExample {
         sb.append(" write Index:").append(buf.writerIndex()); //读索引
         sb.append(" capacity：").append(buf.capacity()); //容量
         //16进制 美化的的 bytebuf 存入 sb 中
-        ByteBufUtil.appendPrettyHexDump(sb,buf);
+        ByteBufUtil.appendPrettyHexDump(sb, buf);
         System.out.println(sb.toString());
     }
 

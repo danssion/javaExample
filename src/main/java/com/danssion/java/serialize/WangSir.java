@@ -48,11 +48,11 @@ public class WangSir implements Externalizable {
 
     /**
      * 1）调用 ObjectOutput 的 writeObject() 方法将字符串类型的 name 写入到输出流中；
-     *
+     * <p>
      * 2）调用 ObjectOutput 的 writeInt() 方法将整型的 age 写入到输出流中；
-     *
+     * <p>
      * 3）调用 ObjectInput 的 readObject() 方法将字符串类型的 name 读入到输入流中；
-     *
+     * <p>
      * 4）调用 ObjectInput 的 readInt() 方法将字符串类型的 age 读入到输入流中；
      *
      * @param out

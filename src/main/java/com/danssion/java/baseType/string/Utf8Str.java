@@ -15,10 +15,10 @@ public class Utf8Str {
         String str = "abcd";
         String ustr = "😀🍒🏸📚";
 
-        System.out.println(str +" length: "+str.length());
-        System.out.println(str +" codeP: "+str.codePointCount(0,str.length()));
+        System.out.println(str + " length: " + str.length());
+        System.out.println(str + " codeP: " + str.codePointCount(0, str.length()));
 
-        System.out.println(ustr +" length: "+ustr.length());
-        System.out.println(ustr +" codeP: "+ustr.codePointCount(0,ustr.length()));
+        System.out.println(ustr + " length: " + ustr.length());
+        System.out.println(ustr + " codeP: " + ustr.codePointCount(0, ustr.length()));
     }
 }

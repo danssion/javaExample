@@ -58,9 +58,9 @@ public class TreeMapExp {
         String firstKey = treeMap.firstKey();//获取集合内第一个元素
         String lastKey = treeMap.lastKey();//获取集合内最后一个元素
         String lowerKey = treeMap.lowerKey("jiaboyan");//获取集合内的key小于"jiaboyan"的key
-        System.out.println("获取集合内的key小于\"jiaboyan\"的key : "+lowerKey);
+        System.out.println("获取集合内的key小于\"jiaboyan\"的key : " + lowerKey);
         String ceilingKey = treeMap.ceilingKey("jiaboyan");//获取集合内的key大于等于"jiaboyan"的key
-        System.out.println("获取集合内的key大于等于\"jiaboyan\"的key: "+ceilingKey);
+        System.out.println("获取集合内的key大于等于\"jiaboyan\"的key: " + ceilingKey);
         SortedMap<String, Integer> sortedMap = treeMap.subMap("a", "my");//获取集合的key从"a"到"jiaboyan"的元素
 
         //删除元素：
@@ -74,25 +74,25 @@ public class TreeMapExp {
 
 
     //自然排序顺序：
-    public static void naturalSort(){
+    public static void naturalSort() {
         //第一种情况：Integer对象
-        TreeMap<Integer,String> treeMapFirst = new TreeMap<Integer, String>();
-        treeMapFirst.put(1,"jiaboyan");
-        treeMapFirst.put(6,"jiaboyan");
-        treeMapFirst.put(3,"jiaboyan");
-        treeMapFirst.put(10,"jiaboyan");
-        treeMapFirst.put(7,"jiaboyan");
-        treeMapFirst.put(13,"jiaboyan");
+        TreeMap<Integer, String> treeMapFirst = new TreeMap<Integer, String>();
+        treeMapFirst.put(1, "jiaboyan");
+        treeMapFirst.put(6, "jiaboyan");
+        treeMapFirst.put(3, "jiaboyan");
+        treeMapFirst.put(10, "jiaboyan");
+        treeMapFirst.put(7, "jiaboyan");
+        treeMapFirst.put(13, "jiaboyan");
         System.out.println(treeMapFirst.toString());
 
         //第二种情况:SortedTest对象
-        TreeMap<SortedTest,String> treeMapSecond = new TreeMap<SortedTest, String>();
-        treeMapSecond.put(new SortedTest(10),"jiaboyan");
-        treeMapSecond.put(new SortedTest(1),"jiaboyan");
-        treeMapSecond.put(new SortedTest(13),"jiaboyan");
-        treeMapSecond.put(new SortedTest(4),"jiaboyan");
-        treeMapSecond.put(new SortedTest(0),"jiaboyan");
-        treeMapSecond.put(new SortedTest(9),"jiaboyan");
+        TreeMap<SortedTest, String> treeMapSecond = new TreeMap<SortedTest, String>();
+        treeMapSecond.put(new SortedTest(10), "jiaboyan");
+        treeMapSecond.put(new SortedTest(1), "jiaboyan");
+        treeMapSecond.put(new SortedTest(13), "jiaboyan");
+        treeMapSecond.put(new SortedTest(4), "jiaboyan");
+        treeMapSecond.put(new SortedTest(0), "jiaboyan");
+        treeMapSecond.put(new SortedTest(9), "jiaboyan");
         System.out.println(treeMapSecond.toString());
     }
 

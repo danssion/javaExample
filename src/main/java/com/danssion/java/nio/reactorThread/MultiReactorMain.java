@@ -12,6 +12,6 @@ import java.io.IOException;
  */
 public class MultiReactorMain {
     public static void main(String[] args) throws IOException {
-        new Thread(new MultiReactor(8090),"main-thread").start();
+        new Thread(new MultiReactor(8090), "main-thread").start();
     }
 }

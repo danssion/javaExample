@@ -38,7 +38,7 @@ public class Hello7 {
 
         System.out.println(abyte | bbyte);
         System.out.println(ashort & bshort);
-        System.out.println(aint+" "+bint);
+        System.out.println(aint + " " + bint);
     }
 
 
@@ -51,8 +51,7 @@ public class Hello7 {
     public String read(String filename) throws IOException {
         try {
             Integer.parseInt("Hello");
-        }
-        catch (NumberFormatException | NumberIsTooLargeException  e) {  //使用'|'切割，多个类型，一个对象e
+        } catch (NumberFormatException | NumberIsTooLargeException e) {  //使用'|'切割，多个类型，一个对象e
 
         }
 
@@ -70,35 +69,37 @@ public class Hello7 {
     }
 
 
-
     /**
      * NIO2.0（AIO）新IO的支持
      * bytebuffer
      */
-    static  class ByteBufferUsage {
+    static class ByteBufferUsage {
 
         public static void useByteBuffer() {
             ByteBuffer buffer = ByteBuffer.allocate(32);
-            buffer.put((byte)1);
+            buffer.put((byte) 1);
             buffer.put(new byte[3]);
             buffer.putChar('A');
             buffer.putFloat(0.0f);
             buffer.putLong(10, 100L);
             System.out.println(buffer.getChar(4));
-            System.out.println("buffer remain:"+buffer.remaining());
+            System.out.println("buffer remain:" + buffer.remaining());
             System.out.println(buffer.getLong());
-            System.out.println("buffer remain:"+buffer.remaining());
+            System.out.println("buffer remain:" + buffer.remaining());
         }
+
         public static void byteOrder() {
             ByteBuffer buffer = ByteBuffer.allocate(8);
             buffer.putInt(1);
             buffer.putInt(2);
             System.out.println("byteOrder ------ ");
-            System.out.println("buffer remain:"+buffer.remaining());
+            System.out.println("buffer remain:" + buffer.remaining());
             buffer.order(ByteOrder.LITTLE_ENDIAN);
-            System.out.println("after ByteOrder.LITTLE_ENDIAN remain:"+buffer.remaining());
-            System.out.println(buffer.getInt(0));; //值为16777216
+            System.out.println("after ByteOrder.LITTLE_ENDIAN remain:" + buffer.remaining());
+            System.out.println(buffer.getInt(0));
+            ; //值为16777216
         }
+
         public static void compact() {
             ByteBuffer buffer = ByteBuffer.allocate(32);
             buffer.put(new byte[16]);
@@ -107,17 +108,18 @@ public class Hello7 {
             buffer.compact();
             int pos = buffer.position();
             System.out.println("compact ------ ");
-            System.out.println("buffer remain:"+buffer.remaining());
+            System.out.println("buffer remain:" + buffer.remaining());
             System.out.println(pos);
         }
+
         public static void viewBuffer() {
             ByteBuffer buffer = ByteBuffer.allocate(32);
             System.out.println("viewBuffer -----");
-            System.out.println("buffer remain:"+buffer.remaining());
+            System.out.println("buffer remain:" + buffer.remaining());
             buffer.putInt(1);
             IntBuffer intBuffer = buffer.asIntBuffer();
             intBuffer.put(2);
-            System.out.println("buffer remain:"+buffer.remaining());
+            System.out.println("buffer remain:" + buffer.remaining());
             int value = buffer.getInt(); //值为2
             System.out.println(value);
         }
@@ -137,6 +139,7 @@ public class Hello7 {
             buffer.putChar('A').flip();
             channel.write(buffer);
         }
+
         public static void readWriteAbsolute() throws IOException {
             FileChannel channel = FileChannel.open(Paths.get("absolute.txt"),
                     StandardOpenOption.READ, StandardOpenOption.CREATE, StandardOpenOption.WRITE);

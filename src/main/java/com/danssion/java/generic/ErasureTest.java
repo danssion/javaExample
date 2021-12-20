@@ -16,29 +16,27 @@ package com.danssion.java.generic;
 import java.util.ArrayList;
 import java.util.List;
 
-class AppleT<T extends Number>
-{
+class AppleT<T extends Number> {
     T size;
-    public AppleT()
-    {
+
+    public AppleT() {
     }
-    public AppleT(T size)
-    {
+
+    public AppleT(T size) {
         this.size = size;
     }
-    public void setSize(T size)
-    {
+
+    public void setSize(T size) {
         this.size = size;
     }
-    public T getSize()
-    {
+
+    public T getSize() {
         return this.size;
     }
 }
-public class ErasureTest
-{
-    public static void main(String[] args)
-    {
+
+public class ErasureTest {
+    public static void main(String[] args) {
         AppleT<Integer> a = new AppleT<>(6);    // ①
         // a的getSize方法返回Integer对象
         Integer as = a.getSize();
@@ -53,8 +51,7 @@ public class ErasureTest
     }
 
 
-    public static void main2()
-    {
+    public static void main2() {
         List<Integer> li = new ArrayList<>();
         li.add(6);
         li.add(9);
@@ -64,6 +61,6 @@ public class ErasureTest
         // 但只要访问ls里的元素，如下面代码将引起运行时异常。
 //        System.out.println(ls.get(0));
         System.out.println(ls.get(0).toString());
-        System.out.println((String)ls.get(0));
+        System.out.println((String) ls.get(0));
     }
 }

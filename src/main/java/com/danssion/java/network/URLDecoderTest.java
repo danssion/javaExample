@@ -18,8 +18,7 @@ import java.net.URLEncoder;
 
 public class URLDecoderTest {
     public static void main(String[] args)
-            throws Exception
-    {
+            throws Exception {
         // 将application/x-www-form-urlencoded字符串
         // 转换成普通字符串
         // 其中的字符串直接从图17.3所示窗口复制过来
@@ -29,7 +28,7 @@ public class URLDecoderTest {
         // 将普通字符串转换成
         // application/x-www-form-urlencoded字符串
         String urlStr = URLEncoder.encode(
-                "疯狂Android讲义" , "GBK");
+                "疯狂Android讲义", "GBK");
         System.out.println(urlStr);
     }
 }

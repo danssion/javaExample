@@ -18,13 +18,15 @@ public class ReEnterLock {
 
 class LockReEnter implements Runnable {
     ReentrantLock lock = new ReentrantLock();
+
     public void get() {
         lock.lock();
-        System.out.print(Thread.currentThread().getId()+"get; \t");
+        System.out.print(Thread.currentThread().getId() + "get; \t");
         // 在get方法里调用set
         set();
         lock.unlock();
     }
+
     public void set() {
         lock.lock();
         System.out.print(Thread.currentThread().getId() + "set; \t");
@@ -32,6 +34,7 @@ class LockReEnter implements Runnable {
     }
 
     @Override
-    public void run()
-    { get(); }
+    public void run() {
+        get();
+    }
 }

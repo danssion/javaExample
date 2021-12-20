@@ -34,6 +34,7 @@ public class OptionalMain {
         Optional<User> opt = Optional.of(user);
         //java.lang.NullPointerException
     }
+
     @Test
     public void whenCreateOfEmptyOptional_thenNullPointerException1() {
         User user = null;
@@ -47,7 +48,7 @@ public class OptionalMain {
         assertEquals("John", opt.get());
 
 
-         name = null;
+        name = null;
         Optional<String> opt1 = Optional.ofNullable(name);
         assertEquals("John", opt1.get());
         //java.util.NoSuchElementException: No value present
@@ -63,7 +64,7 @@ public class OptionalMain {
         System.out.println(opt.get().getAge());
 
         //检查是否有值的另一个选择是 ifPresent() 方法。该方法除了执行检查，还接受一个Consumer(消费者) 参数，如果对象不是空的，就对执行传入的 Lambda 表达式
-        opt.ifPresent( u -> assertEquals(user.getEmail(), u.getEmail()));
+        opt.ifPresent(u -> assertEquals(user.getEmail(), u.getEmail()));
 
         assertEquals(user.getEmail(), opt.get().getEmail());
     }
@@ -79,10 +80,10 @@ public class OptionalMain {
 
     @Test
     public void whenValueNotNull_thenIgnoreDefault() {
-        User user = new User("john@gmail.com","1234");
+        User user = new User("john@gmail.com", "1234");
         User user2 = new User("anna@gmail.com", "1234");
 //        User result = Optional.ofNullable(user).orElse(user2);
-        User result = Optional.ofNullable(user).orElseGet( () -> user2);
+        User result = Optional.ofNullable(user).orElseGet(() -> user2);
 
         assertEquals("john@gmail.com", result.getEmail());
     }
@@ -95,6 +96,7 @@ public class OptionalMain {
         log.debug("Using orElseGet");
         User result2 = Optional.ofNullable(user).orElseGet(() -> createNewUser());
     }
+
     private User createNewUser() {
         log.debug("Creating New User");
         return new User("extra@gmail.com", "1234");
@@ -106,7 +108,7 @@ public class OptionalMain {
     public void whenThrowException_thenOk() {
         User user = null;
         User result = Optional.ofNullable(user)
-                .orElseThrow( () -> new IllegalArgumentException());
+                .orElseThrow(() -> new IllegalArgumentException());
     }
 
     //转换值, 可以转换 Optional  的值。我们从 map() 和 flatMap() 方法开始
@@ -118,24 +120,6 @@ public class OptionalMain {
                 .map(u -> u.getEmail()).orElse("default@gmail.com");
         assertEquals(email, user.getEmail());
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 }

@@ -3,12 +3,12 @@ package com.danssion.java.json.jackson.exp1;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
-public enum GENDER{
+public enum GENDER {
     MALE("男", 1), FEMALE("女", 0);
     private String name;
     private int value;
 
-    GENDER(String name, int value){
+    GENDER(String name, int value) {
         this.name = name;
         this.value = value;
     }
@@ -21,9 +21,9 @@ public enum GENDER{
      * @return
      */
     @JsonCreator
-    public static GENDER getGenderById(int value){
-        for (GENDER c: GENDER.values()){
-            if (c.getValue() == value){
+    public static GENDER getGenderById(int value) {
+        for (GENDER c : GENDER.values()) {
+            if (c.getValue() == value) {
                 return c;
             }
         }
@@ -31,19 +31,19 @@ public enum GENDER{
     }
 
     @JsonValue
-    public String getName(){
+    public String getName() {
         return name;
     }
 
-    public void setName(String name){
+    public void setName(String name) {
         this.name = name;
     }
 
-    public int getValue(){
+    public int getValue() {
         return value;
     }
 
-    public void setValue(int value){
+    public void setValue(int value) {
         this.value = value;
     }
 

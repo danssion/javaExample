@@ -10,13 +10,13 @@ import java.util.concurrent.locks.ReentrantLock;
 public class ConditionExample {
     private static final int count = 10000;
     private static final int threadGroupCount = 5;
-    private static final String inputFile ="conditionFile.txt";
+    private static final String inputFile = "conditionFile.txt";
 
     public static void generateFile() throws IOException {
         //用随机数生成10000个数据放入文件
-        PrintWriter pw = new PrintWriter(new FileWriter(new File(inputFile)),true);
+        PrintWriter pw = new PrintWriter(new FileWriter(new File(inputFile)), true);
         Random random = new Random();
-        for (int i=0;i<count; ++i) {
+        for (int i = 0; i < count; ++i) {
             pw.write(Math.abs(random.nextInt()) % count + ",");
         }
         pw.flush();
@@ -33,18 +33,18 @@ public class ConditionExample {
             String[] strs = str.split(",");
             int index = 0;
 
-            int countForEachFile = count/threadGroupCount;
-            for (int i=0;i<threadGroupCount; i++) {
+            int countForEachFile = count / threadGroupCount;
+            for (int i = 0; i < threadGroupCount; i++) {
                 int records[] = new int[countForEachFile];
-                for (int j = 0;j < countForEachFile; j++) {
+                for (int j = 0; j < countForEachFile; j++) {
                     records[j] = Integer.parseInt(strs[index]);
                     index++;
                 }
-                PrintGroup group = new PrintGroup(records,i);
+                PrintGroup group = new PrintGroup(records, i);
                 group.startPrint();
             }
 
-        } catch (Exception e)  {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
@@ -76,9 +76,9 @@ class PrintGroup {
     private int[] result = new int[2000];
     private int index = 0;
 
-    public PrintGroup(int[] records,int id) throws Exception {
+    public PrintGroup(int[] records, int id) throws Exception {
         this.records = records;
-        this.writer = new PrintWriter(new FileWriter(new File("output"+id+".txt")),true);
+        this.writer = new PrintWriter(new FileWriter(new File("output" + id + ".txt")), true);
     }
 
     public void startPrint() {
@@ -94,27 +94,27 @@ class PrintGroup {
             while (true) {
                 try {
                     lock.lock();
-                    if(first) {
+                    if (first) {
                         first = false;
                         evenLock.await();
                     }
-                    for (int i= 0;i<10;) {
+                    for (int i = 0; i < 10; ) {
                         //数组中的偶数和奇数都打印完了
-                        if(oddIndex >= records.length && evenIndex >= records.length) {
+                        if (oddIndex >= records.length && evenIndex >= records.length) {
                             writer.flush();
                             writer.close();
                             return;
                         }
 
                         //如果所有奇数都打印完了，则让打印偶数的线程有机会运行
-                        if(oddIndex >= records.length) {
+                        if (oddIndex >= records.length) {
                             break;
                         }
 
                         //把奇数输出到文件
-                        if(records[oddIndex] % 2 == 1) {
+                        if (records[oddIndex] % 2 == 1) {
                             i++;
-                            writer.print(records[oddIndex]+" ");
+                            writer.print(records[oddIndex] + " ");
                             result[index++] = records[oddIndex];
                             writer.flush();
                             addCount();
@@ -148,23 +148,23 @@ class PrintGroup {
                         Thread.sleep(1);
                     }
                     lock.lock();
-                    for(int i=0;i<10;) {
-                        if(oddIndex >= records.length && evenIndex >= records.length) {
+                    for (int i = 0; i < 10; ) {
+                        if (oddIndex >= records.length && evenIndex >= records.length) {
                             String s = "";
-                            for(int k =0; k<2000;k++) {
+                            for (int k = 0; k < 2000; k++) {
                                 s += (result[k] + " ");
                             }
                             writer.flush();
                             return;
                         }
 
-                        if(evenIndex >= records.length) {
+                        if (evenIndex >= records.length) {
                             break;
                         }
 
-                        if(records[evenIndex] % 2 == 0) {
+                        if (records[evenIndex] % 2 == 0) {
                             i++;
-                            writer.print(records[evenIndex]+" ");
+                            writer.print(records[evenIndex] + " ");
                             result[index++] = records[evenIndex];
                             writer.flush();
                             addCount();
@@ -185,8 +185,8 @@ class PrintGroup {
 
     private synchronized static void addCount() {
         count++;
-        if(count % 1000 == 0) {
-            System.out.println("已完成："+count);
+        if (count % 1000 == 0) {
+            System.out.println("已完成：" + count);
             if (count == 10000) {
                 System.out.println("Done");
             }

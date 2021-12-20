@@ -22,6 +22,7 @@ public class FilesUtils {
         Files.copy(newFile, output);
         Files.delete(newFile);
     }
+
     /**
      * @param args the command line arguments
      */

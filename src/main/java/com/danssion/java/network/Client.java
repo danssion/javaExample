@@ -18,9 +18,8 @@ import java.io.*;
 
 public class Client {
     public static void main(String[] args)
-            throws IOException
-    {
-        Socket socket = new Socket("127.0.0.1" , 30000);   // ①
+            throws IOException {
+        Socket socket = new Socket("127.0.0.1", 30000);   // ①
 
 //        Socket sk = new Socket();
 //        sk.connect(new InetSocketAddress("127.0.0.1",3000),1000);

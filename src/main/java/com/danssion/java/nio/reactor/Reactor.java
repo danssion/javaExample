@@ -24,7 +24,7 @@ public class Reactor implements Runnable {
         serverSocketChannel.socket().bind(new InetSocketAddress(port));
         serverSocketChannel.configureBlocking(false);
         //Object att  =  Acceptor
-        serverSocketChannel.register(selector, SelectionKey.OP_ACCEPT, new Acceptor(selector,serverSocketChannel));
+        serverSocketChannel.register(selector, SelectionKey.OP_ACCEPT, new Acceptor(selector, serverSocketChannel));
 
     }
 
@@ -50,7 +50,7 @@ public class Reactor implements Runnable {
         // Accepter
         //  Handler
         Runnable runnable = (Runnable) key.attachment();
-        if(runnable != null) {
+        if (runnable != null) {
             //调用run 方法没唤醒新线程
             runnable.run();
         }

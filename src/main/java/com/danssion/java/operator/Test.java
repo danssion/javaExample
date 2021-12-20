@@ -5,7 +5,7 @@ public class Test {
         andOperator();
     }
 
-    public static  void  plusplus() {
+    public static void plusplus() {
         int i = 1;
         int j = 0;
         int k = 0;
@@ -16,7 +16,7 @@ public class Test {
     }
 
     public static void moveSit() {
-        int  i =  1;
+        int i = 1;
         System.out.println("1 << 1");
         System.out.println(i << 1);
         System.out.println("1 << 4");

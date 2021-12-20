@@ -33,15 +33,14 @@ public class MulticastSocketTest implements Runnable {
     byte[] inBuff = new byte[DATA_LEN];
     // 以指定字节数组创建准备接受数据的DatagramPacket对象
     private DatagramPacket inPacket
-            = new DatagramPacket(inBuff , inBuff.length);
+            = new DatagramPacket(inBuff, inBuff.length);
     // 定义一个用于发送的DatagramPacket对象
     private DatagramPacket outPacket = null;
-    public void init()throws IOException
-    {
-        try(
+
+    public void init() throws IOException {
+        try (
                 // 创建键盘输入流
-                Scanner scan = new Scanner(System.in))
-        {
+                Scanner scan = new Scanner(System.in)) {
             // 创建用于发送、接收数据的MulticastSocket对象
             // 由于该MulticastSocket对象需要接收数据，所以有指定端口
             socket = new MulticastSocket(BROADCAST_PORT);
@@ -52,12 +51,11 @@ public class MulticastSocketTest implements Runnable {
             socket.setLoopbackMode(false);
             // 初始化发送用的DatagramSocket，它包含一个长度为0的字节数组
             outPacket = new DatagramPacket(new byte[0]
-                    , 0 , broadcastAddress , BROADCAST_PORT);
+                    , 0, broadcastAddress, BROADCAST_PORT);
             // 启动以本实例的run()方法作为线程体的线程
             new Thread(this).start();
             // 不断读取键盘输入
-            while(scan.hasNextLine())
-            {
+            while (scan.hasNextLine()) {
                 // 将键盘输入的一行字符串转换字节数组
                 byte[] buff = scan.nextLine().getBytes();
                 // 设置发送用的DatagramPacket里的字节数据
@@ -65,49 +63,40 @@ public class MulticastSocketTest implements Runnable {
                 // 发送数据报
                 socket.send(outPacket);
             }
-        }
-        finally
-        {
+        } finally {
             socket.close();
         }
     }
-    public void run()
-    {
-        try
-        {
-            while(true)
-            {
+
+    public void run() {
+        try {
+            while (true) {
                 // 读取Socket中的数据，读到的数据放在inPacket所封装的字节数组里。
                 socket.receive(inPacket);
                 // 打印输出从socket中读取的内容
                 System.out.println("聊天信息：" + new String(inBuff
-                        , 0 , inPacket.getLength()));
+                        , 0, inPacket.getLength()));
             }
         }
         // 捕捉异常
-        catch (IOException ex)
-        {
+        catch (IOException ex) {
             ex.printStackTrace();
-            try
-            {
-                if (socket != null)
-                {
+            try {
+                if (socket != null) {
                     // 让该Socket离开该多点IP广播地址
                     socket.leaveGroup(broadcastAddress);
                     // 关闭该Socket对象
                     socket.close();
                 }
                 System.exit(1);
-            }
-            catch (IOException e)
-            {
+            } catch (IOException e) {
                 e.printStackTrace();
             }
         }
     }
+
     public static void main(String[] args)
-            throws IOException
-    {
+            throws IOException {
         new MulticastSocketTest().init();
     }
 }

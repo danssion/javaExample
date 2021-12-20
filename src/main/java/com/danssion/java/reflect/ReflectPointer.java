@@ -14,7 +14,7 @@ class ReflectPointer {
     public String str2 = "basketball";
     public String str3 = "itcat";
 
-    public ReflectPointer(int x,int y) {//alt + shift +s相当于右键source
+    public ReflectPointer(int x, int y) {//alt + shift +s相当于右键source
         super();
         // TODO Auto-generated constructor stub
         this.x = x;

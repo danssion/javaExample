@@ -48,7 +48,7 @@ public class Client {
                 try {
                     if (socket != null) socket.close();
                     if (out != null) out.close();
-                    if (input != null ) input.close();
+                    if (input != null) input.close();
                 } catch (IOException e) {
                     socket = null;
                     System.out.println("客户端 finally 异常:" + e.getMessage());

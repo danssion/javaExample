@@ -31,8 +31,7 @@ public class DownUtil {
     // 定义下载的文件的总大小
     private int fileSize;
 
-    public DownUtil(String path, String targetFile, int threadNum)
-    {
+    public DownUtil(String path, String targetFile, int threadNum) {
         this.path = path;
         this.threadNum = threadNum;
         // 初始化threads数组
@@ -40,8 +39,7 @@ public class DownUtil {
         this.targetFile = targetFile;
     }
 
-    public void download() throws Exception
-    {
+    public void download() throws Exception {
         URL url = new URL(path);
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
         conn.setConnectTimeout(5 * 1000);
@@ -64,8 +62,7 @@ public class DownUtil {
         // 设置本地文件的大小
         file.setLength(fileSize);
         file.close();
-        for (int i = 0; i < threadNum; i++)
-        {
+        for (int i = 0; i < threadNum; i++) {
             // 计算每条线程的下载的开始位置
             int startPos = i * currentPartSize;
             // 每个线程使用一个RandomAccessFile进行下载
@@ -82,20 +79,17 @@ public class DownUtil {
     }
 
     // 获取下载的完成百分比
-    public double getCompleteRate()
-    {
+    public double getCompleteRate() {
         // 统计多条线程已经下载的总大小
         int sumSize = 0;
-        for (int i = 0; i < threadNum; i++)
-        {
+        for (int i = 0; i < threadNum; i++) {
             sumSize += threads[i].length;
         }
         // 返回已经完成的百分比
         return sumSize * 1.0 / fileSize;
     }
 
-    private class DownThread extends Thread
-    {
+    private class DownThread extends Thread {
         // 当前线程的下载位置
         private int startPos;
         // 定义当前线程负责下载的文件大小
@@ -106,20 +100,17 @@ public class DownUtil {
         public int length;
 
         public DownThread(int startPos, int currentPartSize,
-                          RandomAccessFile currentPart)
-        {
+                          RandomAccessFile currentPart) {
             this.startPos = startPos;
             this.currentPartSize = currentPartSize;
             this.currentPart = currentPart;
         }
 
         @Override
-        public void run()
-        {
-            try
-            {
+        public void run() {
+            try {
                 URL url = new URL(path);
-                HttpURLConnection conn = (HttpURLConnection)url
+                HttpURLConnection conn = (HttpURLConnection) url
                         .openConnection();
                 conn.setConnectTimeout(5 * 1000);
                 conn.setRequestMethod("GET");
@@ -139,17 +130,14 @@ public class DownUtil {
                 int hasRead = 0;
                 // 读取网络数据，并写入本地文件
                 while (length < currentPartSize
-                        && (hasRead = inStream.read(buffer)) != -1)
-                {
+                        && (hasRead = inStream.read(buffer)) != -1) {
                     currentPart.write(buffer, 0, hasRead);
                     // 累计该线程下载的总大小
                     length += hasRead;
                 }
                 currentPart.close();
                 inStream.close();
-            }
-            catch (Exception e)
-            {
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         }

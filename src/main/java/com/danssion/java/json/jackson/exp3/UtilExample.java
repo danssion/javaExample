@@ -43,7 +43,7 @@ public class UtilExample {
         System.out.println("serializer : ");
         System.out.println(jsonStr);
 
-        User deu = JacksonUtil.jsonToObject(jsonStr,User.class);
+        User deu = JacksonUtil.jsonToObject(jsonStr, User.class);
 
         System.out.println("deserializer : ");
         System.out.println(deu);

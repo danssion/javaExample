@@ -43,13 +43,13 @@ public class TestThreadPool {
             @Override
             public void run() {
                 super.run();
-                System.out.println(Thread.currentThread().getId()+" timestamp:"+System.currentTimeMillis());
+                System.out.println(Thread.currentThread().getId() + " timestamp:" + System.currentTimeMillis());
             }
         }
 
         ScheduledThreadPoolExecutor exec = new ScheduledThreadPoolExecutor(2);
         //每隔一段时间执行一次
-        exec.scheduleAtFixedRate(new newMyThread(),0,3000, TimeUnit.MILLISECONDS);
-        exec.scheduleAtFixedRate(new newMyThread(),0,2000, TimeUnit.MILLISECONDS);
+        exec.scheduleAtFixedRate(new newMyThread(), 0, 3000, TimeUnit.MILLISECONDS);
+        exec.scheduleAtFixedRate(new newMyThread(), 0, 2000, TimeUnit.MILLISECONDS);
     }
 }

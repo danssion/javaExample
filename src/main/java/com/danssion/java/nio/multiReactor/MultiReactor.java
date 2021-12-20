@@ -13,7 +13,7 @@ import java.util.concurrent.Executors;
  * @date 2021/10/12 下午10:35
  * @desc JavaExample-DdsignPattern
  */
-public class MultiReactor{
+public class MultiReactor {
     final private int port;
 
     private Reactor mainReactor;//接收io
@@ -28,13 +28,13 @@ public class MultiReactor{
     }
 
     private void run1() throws IOException {
-        new Acceptor(this.mainReactor.getSelector(),this.port);
+        new Acceptor(this.mainReactor.getSelector(), this.port);
         //一个主力线程 不断接收链接
         mainReactorPool.execute(mainReactor);
     }
 
     public void start() throws IOException {
-        new Acceptor(mainReactor.getSelector(),port);
+        new Acceptor(mainReactor.getSelector(), port);
         mainReactorPool.execute(mainReactor);
     }
 

@@ -9,11 +9,12 @@ import java.nio.charset.Charset;
 
 public class SimpleClientHandle extends ChannelInboundHandlerAdapter {
     private int count;
+
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
         System.out.println("客户端连接建立成功！");
         for (int i = 0; i < 10; i++) {
-            ByteBuf buf = Unpooled.copiedBuffer("客户端消息："+i, Charset.forName("utf-8"));
+            ByteBuf buf = Unpooled.copiedBuffer("客户端消息：" + i, Charset.forName("utf-8"));
             ctx.writeAndFlush(buf);
         }
         super.channelActive(ctx);
@@ -22,13 +23,13 @@ public class SimpleClientHandle extends ChannelInboundHandlerAdapter {
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
         System.out.println("收到服务端返回的消息！");
-        ByteBuf buf = (ByteBuf)msg ;
+        ByteBuf buf = (ByteBuf) msg;
         byte[] data = new byte[buf.readableBytes()];
         buf.readBytes(data);
-        String message = new String(data,Charset.forName("utf-8"));
-        System.out.println("收到服务端消息内容："+message);
+        String message = new String(data, Charset.forName("utf-8"));
+        System.out.println("收到服务端消息内容：" + message);
         //发包情况，拆包连包
-        System.out.println("收到服务端消息数量："+(++count));
+        System.out.println("收到服务端消息数量：" + (++count));
         super.channelRead(ctx, msg);
     }
 }

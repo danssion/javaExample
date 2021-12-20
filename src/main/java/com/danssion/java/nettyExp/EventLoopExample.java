@@ -18,11 +18,11 @@ public class EventLoopExample {
         System.out.println(group.next());
 
         //获取 loop,注册channel
-        NioEventLoop eventExecutors = (NioEventLoop)group.next();
+        NioEventLoop eventExecutors = (NioEventLoop) group.next();
 
         //向group 提交任务
         group.next().submit(() -> {
-            System.out.println(Thread.currentThread().getName()+"----");
+            System.out.println(Thread.currentThread().getName() + "----");
         });
     }
 }

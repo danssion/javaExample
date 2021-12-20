@@ -5,11 +5,11 @@ public class StringSubSplit {
 
     public static void main(String[] args) {
         String str = new String("good");
-        char[] ch = {'a','b','c'};
+        char[] ch = {'a', 'b', 'c'};
         StringSubSplit test = new StringSubSplit();
 
-        test.change(str,ch);
-        System.out.println(str+"  and");
+        test.change(str, ch);
+        System.out.println(str + "  and");
         System.out.println(ch);
 
 //        test.checkChinese();
@@ -25,12 +25,12 @@ public class StringSubSplit {
     public static void subStr() {
         String str1 = " abc defg";
 
-        String subStr1 = str1.trim().substring(0,str1.indexOf(" "));
-        System.out.println("str1 -> "+str1+" | sub->"+subStr1);
+        String subStr1 = str1.trim().substring(0, str1.indexOf(" "));
+        System.out.println("str1 -> " + str1 + " | sub->" + subStr1);
 
         String str2 = "btc/usdt";
-        String subStr2 = str2.substring(0,str2.indexOf("/"));
-        System.out.println("str2 -> "+str2+" | sub->"+subStr2);
+        String subStr2 = str2.substring(0, str2.indexOf("/"));
+        System.out.println("str2 -> " + str2 + " | sub->" + subStr2);
 
     }
 
@@ -49,11 +49,12 @@ public class StringSubSplit {
         String[] ss1 = str1.split("&&");
         System.out.println(ss1[0]);
     }
+
     public static void findStr() {
-        String [] strArr = {"sdbds@163.com","sssddd@126.com","117433502@qq.com","abcdef@vip.163.com"
-                ,"aabbcc@vvip.126.com","13330560585@qq.126.com"};
+        String[] strArr = {"sdbds@163.com", "sssddd@126.com", "117433502@qq.com", "abcdef@vip.163.com"
+                , "aabbcc@vvip.126.com", "13330560585@qq.126.com"};
         for (String str : strArr) {
-            if(str.substring(str.indexOf("@")).contains("126") || str.substring(str.indexOf("@")).contains("163")) {
+            if (str.substring(str.indexOf("@")).contains("126") || str.substring(str.indexOf("@")).contains("163")) {
                 System.out.println(str.substring(str.indexOf("@")));
             }
         }
@@ -70,11 +71,11 @@ public class StringSubSplit {
                 "s:6:\"kyc_id\";i:0;s:13:\"kyc_confirmed\";i:0;s:16:\"mobile_confirmed\";i:0;}";
 
 
-        System.out.println("4990725 index: "+jsonStr.indexOf("4990725"));
+        System.out.println("4990725 index: " + jsonStr.indexOf("4990725"));
 
     }
 
-    public void change(String str,char ch[]) {
+    public void change(String str, char ch[]) {
         str = "test ok";
         ch[0] = 'g';
     }
@@ -84,15 +85,15 @@ public class StringSubSplit {
         char b = '好';
         String astr = String.valueOf(a);
         String bstr = String.valueOf(b);
-        System.out.println("char length:"+astr.length()+" bytes length："+astr.getBytes().length);
-        System.out.println("char length:"+bstr.length()+" bytes length："+bstr.getBytes().length);
+        System.out.println("char length:" + astr.length() + " bytes length：" + astr.getBytes().length);
+        System.out.println("char length:" + bstr.length() + " bytes length：" + bstr.getBytes().length);
     }
 
     public static void stringSplit() {
         String a = "_2019_11|50000|99";
         String arr[] = a.split("\\|");
 
-        for (String str:arr) {
+        for (String str : arr) {
             System.out.println(str);
         }
 

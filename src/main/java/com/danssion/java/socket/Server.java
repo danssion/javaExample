@@ -33,8 +33,8 @@ public class Server {
             System.out.println("服务器异常: " + e.getMessage());
         } finally {
             try {
-                if(serverSocket != null )  serverSocket.close();
-                if(client != null) client.close();
+                if (serverSocket != null) serverSocket.close();
+                if (client != null) client.close();
             } catch (Exception e) {
             }
         }
@@ -42,6 +42,7 @@ public class Server {
 
     private class HandlerThread implements Runnable {
         private Socket socket;
+
         public HandlerThread(Socket client) {
             socket = client;
             new Thread(this).start();
@@ -49,7 +50,7 @@ public class Server {
 
         public void run() {
             DataInputStream input = null;
-            DataOutputStream out =  null;
+            DataOutputStream out = null;
             try {
                 // 读取客户端数据
                 input = new DataInputStream(socket.getInputStream());
@@ -70,8 +71,8 @@ public class Server {
             } finally {
                 if (socket != null) {
                     try {
-                        if(input != null) input.close();
-                        if(out != null) out.close();
+                        if (input != null) input.close();
+                        if (out != null) out.close();
                         socket.close();
                     } catch (Exception e) {
                         socket = null;

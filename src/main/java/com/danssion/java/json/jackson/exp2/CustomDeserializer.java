@@ -22,7 +22,7 @@ public class CustomDeserializer extends StdDeserializer<Person> {
 
     @Override
     public Person deserialize(JsonParser jp, DeserializationContext ctxt)
-            throws IOException  {
+            throws IOException {
         JsonNode node = jp.getCodec().readTree(jp);
         Person person = new Person();
         int age = (Integer) ((IntNode) node.get("age")).numberValue();

@@ -1,7 +1,6 @@
 package com.danssion.java.baseType.enumType;
 
 
-
 public enum Day2 {
     MONDAY("星期一"),
     TUESDAY("星期二"),
@@ -15,24 +14,26 @@ public enum Day2 {
 
     /**
      * 私有构造,防止被外部调用
+     *
      * @param desc
      */
-    private Day2(String desc){
-        this.desc=desc;
+    private Day2(String desc) {
+        this.desc = desc;
     }
 
     /**
      * 定义方法,返回描述,跟常规类的定义没区别
+     *
      * @return
      */
-    public String getDesc(){
+    public String getDesc() {
         return desc;
     }
 
-    public static void main(String[] args){
-        for (Day2 day:Day2.values()) {
-            System.out.println("name:"+day.name()+
-                    ",desc:"+day.getDesc());
+    public static void main(String[] args) {
+        for (Day2 day : Day2.values()) {
+            System.out.println("name:" + day.name() +
+                    ",desc:" + day.getDesc());
         }
     }
 

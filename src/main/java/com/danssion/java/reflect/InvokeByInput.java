@@ -16,11 +16,11 @@ public class InvokeByInput {
          * 需要右键在run as-configurations-arguments里输入b.Inter（完整类名）
          *
          */
-        Method m = Class.forName(str).getMethod("main",String[].class);
+        Method m = Class.forName(str).getMethod("main", String[].class);
         //下面这两种方式都可以,main方法需要一个参数
 
-        m.invoke(null, new Object[]{new String[]{"111","222","333"}});
-        m.invoke(null, (Object)new String[]{"111","222","333"});//这个可以说明，数组也是Object
+        m.invoke(null, new Object[]{new String[]{"111", "222", "333"}});
+        m.invoke(null, (Object) new String[]{"111", "222", "333"});//这个可以说明，数组也是Object
         /*
          * m.invoke(null, new String[]{"111","222","333"})
          * 上面的不可以,因为java会自动拆包
@@ -30,7 +30,7 @@ public class InvokeByInput {
 
 class Inter {
     public static void main(String[] args) {
-        for(Object obj : args) {
+        for (Object obj : args) {
             System.out.println(obj);
         }
     }

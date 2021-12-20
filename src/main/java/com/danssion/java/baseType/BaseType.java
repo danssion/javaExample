@@ -30,25 +30,22 @@ public class BaseType {
         int max = Byte.MAX_VALUE;
         int min = Byte.MIN_VALUE;
 
-        if(by1 == (by2))
-        {
+        if (by1 == (by2)) {
             System.out.println("Operation '=' compares the reference of Byte objects and equal");
         } else {
             System.out.println("Operation '=' compares the objects of Byte objects and not equal");
         }
 
-        if(by1.equals(by2))
-        {
+        if (by1.equals(by2)) {
             System.out.println("Function 'equals()' compares the value of Byte objects and equal");
         } else {
             System.out.println("Function 'equals()' compares the value of Byte objects and not equal");
         }
 
         Byte by3 = by1;
-        if(by3 == by1)
-        {
+        if (by3 == by1) {
             System.out.println("Operation '=' compares the reference of Byte objects and equal");
-        }else {
+        } else {
             System.out.println("Operation '=' compares the reference of Byte objects and not equal");
         }
 
@@ -56,7 +53,7 @@ public class BaseType {
 
         int int1 = 123;
 
-        if(byt1 == int1) {
+        if (byt1 == int1) {
             System.out.println("byte == int");
         } else {
             System.out.println("byte != int");
@@ -67,7 +64,7 @@ public class BaseType {
 
     public static void doubleVsLong() {
         Long ts = 1580556965985L;
-        Long newts = new Double(ts/1000).longValue();
+        Long newts = new Double(ts / 1000).longValue();
 
 
         System.out.println(newts);
@@ -79,8 +76,8 @@ public class BaseType {
         Integer psize = 200;
 
 
-        Double r =  new Double((double)max/psize);
-        Double re = Math.ceil( r );
+        Double r = new Double((double) max / psize);
+        Double re = Math.ceil(r);
         System.out.println(r + " " + re + " " + re.intValue());
     }
 }

@@ -17,17 +17,18 @@ public enum DayLombok {
 
     /**
      * 私有构造,防止被外部调用
+     *
      * @param desc
      */
-    private DayLombok(String desc){
-        this.desc=desc;
+    private DayLombok(String desc) {
+        this.desc = desc;
     }
 
 
-    public static void main(String[] args){
-        for (DayLombok day: DayLombok.values()) {
-            System.out.println("name:"+day.name()+
-                    ",desc:"+day.getDesc());
+    public static void main(String[] args) {
+        for (DayLombok day : DayLombok.values()) {
+            System.out.println("name:" + day.name() +
+                    ",desc:" + day.getDesc());
         }
     }
 

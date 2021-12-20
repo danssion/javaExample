@@ -13,18 +13,15 @@
 
 package com.danssion.java.classload;
 
-class Tester
-{
-    static
-    {
+class Tester {
+    static {
         System.out.println("Tester类的静态初始化块...");
     }
 }
-public class ClassLoaderTest
-{
+
+public class ClassLoaderTest {
     public static void main(String[] args)
-            throws ClassNotFoundException
-    {
+            throws ClassNotFoundException {
         ClassLoader cl = ClassLoader.getSystemClassLoader();
         // 下面语句仅仅是加载Tester类
         cl.loadClass("Tester");

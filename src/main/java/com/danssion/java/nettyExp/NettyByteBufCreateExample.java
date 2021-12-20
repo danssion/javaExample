@@ -11,14 +11,14 @@ public class NettyByteBufCreateExample {
 
     public static final void writeExp() {
         ByteBuf buf = ByteBufAllocator.DEFAULT.heapBuffer();
-        buf.writeBytes(new byte[]{1,2,3,4});//写四个字节
+        buf.writeBytes(new byte[]{1, 2, 3, 4});//写四个字节
         log(buf);
 
         buf.writeInt(5);//占4个字节
         log(buf);
         System.out.println("开始读取操作");
         buf.markReaderIndex();//标记读取index ，可以实现数据重复读取.  markWriteIndex 同理
-        byte b=buf.readByte();
+        byte b = buf.readByte();
         System.out.println(b);
         buf.resetReaderIndex();
         log(buf);
@@ -43,7 +43,7 @@ public class NettyByteBufCreateExample {
         sb.append(" write Index:").append(buf.writerIndex()); //读索引
         sb.append(" capacity：").append(buf.capacity()); //容量
         //16进制 美化的的 bytebuf 存入 sb 中
-        ByteBufUtil.appendPrettyHexDump(sb,buf);
+        ByteBufUtil.appendPrettyHexDump(sb, buf);
         System.out.println(sb.toString());
     }
 

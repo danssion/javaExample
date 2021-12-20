@@ -5,7 +5,7 @@ import java.util.*;
 public class list {
     public static void main(String[] args) {
 
-       listTrans();
+        listTrans();
     }
 
     private void listfor() {
@@ -76,7 +76,7 @@ public class list {
         }
 
         /* 建立一个数组 */
-        int[] integers = {1, 2,3,4};
+        int[] integers = {1, 2, 3, 4};
         /* 开始遍历 */
         for (int i : integers) {
             System.out.println(i); /* 依次输出“1”、“2”、“3”、“4” */
@@ -91,13 +91,13 @@ public class list {
         strList.add("Queued. Thank you.");
         strList.add("message");
 
-        HashMap<String ,String> hs = new HashMap<>();
-        hs.put("id","<20200312063928.1.E57A21281C0F6EB5@mg.mytokenmsg.com>");
+        HashMap<String, String> hs = new HashMap<>();
+        hs.put("id", "<20200312063928.1.E57A21281C0F6EB5@mg.mytokenmsg.com>");
 
 
-        String [] strArr = strList.toArray(new String[0]);
+        String[] strArr = strList.toArray(new String[0]);
 
-        for (String str:strArr) {
+        for (String str : strArr) {
             System.out.println(str);
         }
 

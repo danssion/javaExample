@@ -12,24 +12,23 @@
 
 
 package com.danssion.java.network.senior.client;
+
 import java.io.*;
 
 public class ClientThread extends Thread {
     // 该客户端线程负责处理的输入流
     BufferedReader br = null;
+
     // 使用一个网络输入流来创建客户端线程
-    public ClientThread(BufferedReader br)
-    {
+    public ClientThread(BufferedReader br) {
         this.br = br;
     }
-    public void run()
-    {
-        try
-        {
+
+    public void run() {
+        try {
             String line = null;
             // 不断从输入流中读取数据，并将这些数据打印输出
-            while((line = br.readLine())!= null)
-            {
+            while ((line = br.readLine()) != null) {
                 System.out.println(line);
 				/*
 				本例仅打印了从服务器端读到的内容。实际上，此处的情况可以更复杂：
@@ -44,23 +43,16 @@ public class ClientThread extends Thread {
 				添加协议字符串后再发送，客户端就可以根据该信息知道对手的下棋坐标。
 				*/
             }
-        }
-        catch (IOException ex)
-        {
+        } catch (IOException ex) {
             ex.printStackTrace();
         }
         // 使用finally块来关闭该线程对应的输入流
-        finally
-        {
-            try
-            {
-                if (br != null)
-                {
+        finally {
+            try {
+                if (br != null) {
                     br.close();
                 }
-            }
-            catch (IOException ex)
-            {
+            } catch (IOException ex) {
                 ex.printStackTrace();
             }
         }

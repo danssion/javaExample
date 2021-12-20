@@ -20,18 +20,16 @@ import java.util.concurrent.*;
 
 public class SimpleAIOServer {
     static final int PORT = 30000;
+
     public static void main(String[] args)
-            throws Exception
-    {
-        try(
+            throws Exception {
+        try (
                 // ①创建AsynchronousServerSocketChannel对象。
                 AsynchronousServerSocketChannel serverChannel =
-                        AsynchronousServerSocketChannel.open())
-        {
+                        AsynchronousServerSocketChannel.open()) {
             // ②指定在指定地址、端口监听。
             serverChannel.bind(new InetSocketAddress(PORT));
-            while (true)
-            {
+            while (true) {
                 // ③采用循环接受来自客户端的连接
                 Future<AsynchronousSocketChannel> future
                         = serverChannel.accept();

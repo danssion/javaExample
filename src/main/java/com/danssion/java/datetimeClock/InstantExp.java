@@ -36,7 +36,7 @@ public class InstantExp {
 
         Clock clock = Clock.systemDefaultZone();
 
-        System.out.println("default zone id:"+clock);
+        System.out.println("default zone id:" + clock);
 
         Instant instantClock = Instant.now(clock);
 
@@ -45,7 +45,7 @@ public class InstantExp {
 
         Instant localDateGet = Instant.now();
 
-        System.out.println("UTC+8: "+localDateGet.atZone(ZoneId.of("UTC+8")));
+        System.out.println("UTC+8: " + localDateGet.atZone(ZoneId.of("UTC+8")));
         System.out.println("从1970-01-01T00：00：00Z开始的秒数 :" + localDateGet.getEpochSecond());
         System.out.println("localDateGet获取当前是本月的第几天 :" + localDateGet.atZone(ZoneId.of("GMT+8", new HashMap<>(64))));
 
@@ -83,7 +83,6 @@ public class InstantExp {
         System.out.println(datetime2.isBefore(datetime3));
 
 
-
         //时间点加任意时间单位
         Instant plusSeconds = Instant.EPOCH.plusSeconds(100000L);
         System.out.println(plusSeconds);
@@ -97,7 +96,7 @@ public class InstantExp {
         System.out.println(plus100days.toEpochMilli());
         System.out.println(plus100days.getNano());
 
-        Instant lastday = Instant.now().minus(1 ,ChronoUnit.DAYS);
+        Instant lastday = Instant.now().minus(1, ChronoUnit.DAYS);
         System.out.println(lastday.getEpochSecond());
     }
 }

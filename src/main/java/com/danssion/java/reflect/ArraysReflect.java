@@ -12,12 +12,12 @@ public class ArraysReflect {
     public static void main(String[] args) {
 
         int[] a = new int[3];
-        int[] b = new int[]{4,5,5};//直接赋值后不可以指定长度，否则ＣＥ
+        int[] b = new int[]{4, 5, 5};//直接赋值后不可以指定长度，否则ＣＥ
         int[][] c = new int[3][2];
-        String[] d = new String[]{"jjj","kkkk"};
-        Integer[] e = new Integer[]{2,1,3,5,67};
-        System.out.println(a==b);//false
-        System.out.println(a.getClass()==b.getClass());//true
+        String[] d = new String[]{"jjj", "kkkk"};
+        Integer[] e = new Integer[]{2, 1, 3, 5, 67};
+        System.out.println(a == b);//false
+        System.out.println(a.getClass() == b.getClass());//true
         //System.out.println(a.getClass()==d.getClass());    //比较字节码a和cd也没法比
         System.out.println(a.getClass());//输出class [I
         System.out.println(a.getClass().getName());//输出[I,中括号表示数组，I表示整数

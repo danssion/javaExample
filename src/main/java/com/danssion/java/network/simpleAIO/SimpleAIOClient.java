@@ -20,17 +20,16 @@ import java.nio.charset.*;
 
 public class SimpleAIOClient {
     static final int PORT = 30000;
+
     public static void main(String[] args)
-            throws Exception
-    {
+            throws Exception {
         // 用于读取数据的ByteBuffer。
         ByteBuffer buff = ByteBuffer.allocate(1024);
         Charset utf = Charset.forName("utf-8");
-        try(
+        try (
                 // ①创建AsynchronousSocketChannel对象
                 AsynchronousSocketChannel clientChannel
-                        = AsynchronousSocketChannel.open())
-        {
+                        = AsynchronousSocketChannel.open()) {
             // ②连接远程服务器
             clientChannel.connect(new InetSocketAddress("127.0.0.1"
                     , PORT)).get();     // ④

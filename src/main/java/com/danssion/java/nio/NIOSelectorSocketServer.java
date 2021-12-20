@@ -56,7 +56,7 @@ public class NIOSelectorSocketServer implements Runnable {
     }
 
     private void dispatch(SelectionKey key) throws IOException {
-        if(key.isAcceptable()) { //可以用事件
+        if (key.isAcceptable()) { //可以用事件
             this.register(key);
         } else if (key.isReadable()) { //读取事件
             this.read(key);
@@ -72,7 +72,7 @@ public class NIOSelectorSocketServer implements Runnable {
         SocketChannel socketChannel = channel.accept();
         socketChannel.configureBlocking(false);
         //再次注册，channel 为Read 事件
-        socketChannel.register(selector,SelectionKey.OP_READ);
+        socketChannel.register(selector, SelectionKey.OP_READ);
     }
 
     private void read(SelectionKey key) throws IOException {
@@ -81,7 +81,7 @@ public class NIOSelectorSocketServer implements Runnable {
         //申请缓存区
         ByteBuffer buffer = ByteBuffer.allocate(1024);
         channel.read(buffer);
-        System.out.println("server Recieve msg:"+new String(buffer.array()));
+        System.out.println("server Recieve msg:" + new String(buffer.array()));
     }
 
     public static void main(String[] args) throws IOException {

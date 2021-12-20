@@ -28,7 +28,6 @@ public final class JacksonUtil {
     private final static ObjectMapper objectMapper;
 
 
-
     static {
         //最常用的 API 就是基于"对象绑定" 的 ObjectMapper
         objectMapper = new ObjectMapper();
@@ -65,7 +64,7 @@ public final class JacksonUtil {
         objectMapper.configure(SerializationFeature.FAIL_ON_EMPTY_BEANS, false);
         //单引号处理
         objectMapper.configure(com.fasterxml.jackson.core.JsonParser.Feature.ALLOW_SINGLE_QUOTES, true);
-        objectMapper.configure(com.fasterxml.jackson.core.JsonParser.Feature.ALLOW_UNQUOTED_CONTROL_CHARS, true) ;
+        objectMapper.configure(com.fasterxml.jackson.core.JsonParser.Feature.ALLOW_UNQUOTED_CONTROL_CHARS, true);
     }
 
     public static ObjectMapper getObjectMapper() {
@@ -73,16 +72,16 @@ public final class JacksonUtil {
     }
 
     /**
-     * @desc 获取json 对象
      * @return
+     * @desc 获取json 对象
      */
     public static ObjectNode getJson() {
         return objectMapper.createObjectNode();
     }
 
     /**
-     * @desc ArrayNode (类似fastjson中的JSONArray)
      * @return
+     * @desc ArrayNode (类似fastjson中的JSONArray)
      */
     public static ArrayNode getJsonArray() {
         return objectMapper.createArrayNode();
@@ -126,6 +125,7 @@ public final class JacksonUtil {
 
     /**
      * java 对象转 ObjectNode
+     *
      * @param object
      * @param <T>
      * @return
@@ -144,6 +144,7 @@ public final class JacksonUtil {
 
     /**
      * java 对象转 JsonNode
+     *
      * @param object
      * @param <T>
      * @return
@@ -174,6 +175,7 @@ public final class JacksonUtil {
         }
         return null;
     }
+
     public static <T> List<T> jsonToObjectList(String jsonString, Class<T> clazz) {
         if (jsonString == null || "".equals(jsonString)) {
             return null;
@@ -193,13 +195,13 @@ public final class JacksonUtil {
             } catch (Exception e) {
                 log.warn("json error:" + e.getMessage());
             }
-            return parseJsonList(jsonString,clazz);
+            return parseJsonList(jsonString, clazz);
         }
     }
 
 
-    public static String toJsonCompress(Object object){
-        if (object == null)  {
+    public static String toJsonCompress(Object object) {
+        if (object == null) {
             return null;
         }
         String json = toJsonString(object);
@@ -208,43 +210,32 @@ public final class JacksonUtil {
     }
 
 
-    public static String toJsonCompress(String json){
-        if(StringUtils.isBlank(json)) {
+    public static String toJsonCompress(String json) {
+        if (StringUtils.isBlank(json)) {
             return json;
         }
         StringBuilder sb = new StringBuilder();
         boolean skip = true;// true 允许截取(表示未进入string双引号)
         boolean escaped = false;// 转义符
-        for (int i = 0; i < json.length(); i++)
-        {
+        for (int i = 0; i < json.length(); i++) {
             char c = json.charAt(i);
-            if (!escaped && c == '\\')
-            {
+            if (!escaped && c == '\\') {
                 escaped = true;
-            }
-            else
-            {
+            } else {
                 escaped = false;
             }
-            if (skip)
-            {
-                if (c == ' ' || c == '\r' || c == '\n' || c == '\t')
-                {
+            if (skip) {
+                if (c == ' ' || c == '\r' || c == '\n' || c == '\t') {
                     continue;
                 }
             }
             sb.append(c);
-            if (c == '"' && !escaped)
-            {
+            if (c == '"' && !escaped) {
                 skip = !skip;
             }
         }
         return sb.toString().replaceAll("\r\n", "\\\\r\\\\n");
     }
-
-
-
-
 
 
     public static final class IosDateTimeJsonSerializer extends JsonSerializer {
@@ -264,14 +255,10 @@ public final class JacksonUtil {
     }
 
 
-
-
-
-
-    public static <T> T copyAttributeFromMap(Map<String, ?> requestMap, Class<T> clazz) throws InstantiationException, IllegalAccessException{
+    public static <T> T copyAttributeFromMap(Map<String, ?> requestMap, Class<T> clazz) throws InstantiationException, IllegalAccessException {
         T bean = clazz.newInstance();
-        if(bean!=null && requestMap!=null){
-            Class userCla = (Class)bean.getClass();
+        if (bean != null && requestMap != null) {
+            Class userCla = (Class) bean.getClass();
             Field[] fs = userCla.getDeclaredFields();
             for (int i = 0; i < fs.length; i++) {
                 Field f = fs[i];
@@ -284,7 +271,7 @@ public final class JacksonUtil {
     }
 
     /**
-     * @param json 准备转换json
+     * @param json  准备转换json
      * @param clazz 集合元素类型
      * @return
      * @description json字符串转换成对象集合
@@ -303,15 +290,14 @@ public final class JacksonUtil {
 
     /**
      * @param collectionClass 集合类
-     * @param elementClasses 集合元素类
+     * @param elementClasses  集合元素类
      * @return
      * @description 获取泛型的ColloectionType
      * @version V1.0
      */
-    private static JavaType getCollectionType(Class<?> collectionClass, Class<?>... elementClasses)  {
+    private static JavaType getCollectionType(Class<?> collectionClass, Class<?>... elementClasses) {
         return objectMapper.getTypeFactory().constructParametricType(collectionClass, elementClasses);
     }
-
 
 
 }

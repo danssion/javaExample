@@ -11,9 +11,9 @@ public class Base64Test {
 
     public static void testSpecialStr() {
         String str1 = "#abdc";
-        String encodeStr1=  "I2FiZGM=";
+        String encodeStr1 = "I2FiZGM=";
 
-        Base64Test.decodeBase64(str1,encodeStr1);
+        Base64Test.decodeBase64(str1, encodeStr1);
     }
 
     public static void testEmoji() {
@@ -21,20 +21,20 @@ public class Base64Test {
 //        String encode = "4pq977iP8J+PgG51bGzwn4+I8J+PuA==";
         String encode = "I1Jvbmfwn4y577 l77yBIybigKbigKYl4pq977iP8J PgPCfj7g=";
 
-        Base64Test.decodeBase64(str,encode);
+        Base64Test.decodeBase64(str, encode);
     }
 
-    public static void decodeBase64(String str, String toDeStr ) {
+    public static void decodeBase64(String str, String toDeStr) {
         String encodeStr = null;
         String decode = null;
         try {
-            encodeStr = Base64.getEncoder().encodeToString(str.getBytes("utf8" ));
+            encodeStr = Base64.getEncoder().encodeToString(str.getBytes("utf8"));
             byte[] decodeByte = Base64.getDecoder().decode(toDeStr);
-            decode = new String(decodeByte,"utf8");
+            decode = new String(decodeByte, "utf8");
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
-        System.out.println(toDeStr+" ("+str+") ==> "+decode+ " / java encode:"+ encodeStr);
+        System.out.println(toDeStr + " (" + str + ") ==> " + decode + " / java encode:" + encodeStr);
     }
 
 

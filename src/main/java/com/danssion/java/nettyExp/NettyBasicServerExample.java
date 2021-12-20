@@ -11,8 +11,8 @@ import io.netty.channel.socket.nio.NioSocketChannel;
 public class NettyBasicServerExample {
 
     /**
-     * @desc 开发一个  主从多reactor 多线程模型的服务
      * @param args
+     * @desc 开发一个  主从多reactor 多线程模型的服务
      */
     public static void main(String[] args) {
 
@@ -23,7 +23,7 @@ public class NettyBasicServerExample {
         //构建 netty server API
         ServerBootstrap bootstrap = new ServerBootstrap();
 
-        bootstrap.group(mainGroup,workGroup)
+        bootstrap.group(mainGroup, workGroup)
                 //指定 epoll 模型
 //                .channel(EpollServerSocketChannel.class)
                 .channel(NioServerSocketChannel.class)  //channel 表示采用什么样的通信方式 IO 方式
@@ -32,18 +32,18 @@ public class NettyBasicServerExample {
                     @Override
                     protected void initChannel(SocketChannel ch) throws Exception {
                         ch.pipeline()
-                                .addLast("h1",new NormalMessageHandle())//消息处理的 handle , 处理IO 事件
-                        //举例：
-                        //.addLast 心跳的handler
-                        //.addLast 编解码的、协议处理的、消息处理
+                                .addLast("h1", new NormalMessageHandle())//消息处理的 handle , 处理IO 事件
+                                //举例：
+                                //.addLast 心跳的handler
+                                //.addLast 编解码的、协议处理的、消息处理
                                 //新增h2名字的  处理 handle
-                    .addLast("h2",new ChannelInboundHandlerAdapter(){
-                        @Override
-                        public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
-                            System.out.println("服务端 收到的数据：第二次处理");
-                            super.channelRead(ctx, msg);
-                        }
-                    });
+                                .addLast("h2", new ChannelInboundHandlerAdapter() {
+                                    @Override
+                                    public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
+                                        System.out.println("服务端 收到的数据：第二次处理");
+                                        super.channelRead(ctx, msg);
+                                    }
+                                });
                     }
                 });
         try {

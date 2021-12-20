@@ -18,7 +18,7 @@ public class NIOSocketServer {
 
     /**
      * NIO 三个核心
-     *
+     * <p>
      * channel
      * buffer
      * selector
@@ -34,10 +34,10 @@ public class NIOSocketServer {
             while (true) {
                 SocketChannel socketChannel = serverSocketChannel.accept();//获得一个客户端链接
                 socketChannel.configureBlocking(false);//IO 非阻塞
-                if(socketChannel != null) {
+                if (socketChannel != null) {
                     ByteBuffer byteBuffer = ByteBuffer.allocate(1024);//用户空间的缓存区
                     int i = socketChannel.read(byteBuffer);
-                    if(i > 0) {
+                    if (i > 0) {
                         System.out.println(new String(byteBuffer.array()));
                     } else {
                         Thread.sleep(1000);

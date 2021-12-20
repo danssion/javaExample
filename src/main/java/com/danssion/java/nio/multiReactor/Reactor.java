@@ -27,7 +27,7 @@ public class Reactor implements Runnable {
      */
     @Override
     public void run() {
-        while(!Thread.interrupted()) {
+        while (!Thread.interrupted()) {
             try {
                 //完成一个事件注册过程，区分事件是 读、写
                 AsyncHandler handler;
@@ -46,7 +46,7 @@ public class Reactor implements Runnable {
                 while (iterator.hasNext()) {
                     SelectionKey key = iterator.next();
                     Runnable runnable = (Runnable) key.attachment();//得到 Acceptor
-                    if(runnable != null) {
+                    if (runnable != null) {
                         runnable.run();
                     }
                     iterator.remove();
@@ -58,8 +58,8 @@ public class Reactor implements Runnable {
     }
 
     /**
-     * @desc 把接收到的任务 扔到缓存队列，后续异步调用处理
      * @param handler
+     * @desc 把接收到的任务 扔到缓存队列，后续异步调用处理
      */
     public void register(AsyncHandler handler) {
         event.offer(handler);//有一个事件注册

@@ -10,6 +10,6 @@ import java.io.IOException;
  */
 public class ReactorMain {
     public static void main(String[] args) throws IOException {
-        new Thread(new Reactor(8090),"main-thread").start();
+        new Thread(new Reactor(8090), "main-thread").start();
     }
 }

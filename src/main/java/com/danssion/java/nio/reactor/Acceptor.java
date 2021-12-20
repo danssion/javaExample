@@ -26,9 +26,9 @@ public class Acceptor implements Runnable {
         SocketChannel channel;
         try {
             channel = serverSocketChannel.accept();
-            System.out.println(channel.getRemoteAddress()+":收到一个客户端连接");
+            System.out.println(channel.getRemoteAddress() + ":收到一个客户端连接");
             channel.configureBlocking(false);
-            channel.register(selector, SelectionKey.OP_READ,new Handler(channel));
+            channel.register(selector, SelectionKey.OP_READ, new Handler(channel));
         } catch (IOException e) {
             e.printStackTrace();
         }

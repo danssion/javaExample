@@ -12,6 +12,7 @@
 
 
 package com.danssion.java.nio;
+
 import java.io.*;
 import java.util.*;
 import java.nio.file.*;
@@ -21,13 +22,12 @@ import java.nio.file.attribute.*;
 
 public class AttributeViewTest {
     public static void main(String[] args)
-            throws Exception
-    {
+            throws Exception {
         // 获取将要操作的文件
         Path testPath = Paths.get("AttributeViewTest.java");
         // 获取访问基本属性的BasicFileAttributeView
         BasicFileAttributeView basicView = Files.getFileAttributeView(
-                testPath , BasicFileAttributeView.class);
+                testPath, BasicFileAttributeView.class);
         // 获取访问基本属性的BasicFileAttributes
         BasicFileAttributes basicAttribs = basicView.readAttributes();
         // 访问文件的基本属性
@@ -54,13 +54,12 @@ public class AttributeViewTest {
                 testPath, UserDefinedFileAttributeView.class);
         List<String> attrNames = userView.list();
         // 遍历所有的自定义属性
-        for (String name : attrNames)
-        {
+        for (String name : attrNames) {
             ByteBuffer buf = ByteBuffer.allocate(userView.size(name));
             userView.read(name, buf);
             buf.flip();
             String value = Charset.defaultCharset().decode(buf).toString();
-            System.out.println(name + "--->" + value) ;
+            System.out.println(name + "--->" + value);
         }
         // 添加一个自定义属性
         userView.write("发行者", Charset.defaultCharset()

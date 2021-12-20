@@ -24,21 +24,21 @@ public class RSAUtil {
     }
 
     //获取公钥(Base64编码)
-    public static String getPublicKey(KeyPair keyPair){
+    public static String getPublicKey(KeyPair keyPair) {
         PublicKey publicKey = keyPair.getPublic();
         byte[] bytes = publicKey.getEncoded();
         return byte2Base64(bytes);
     }
 
     //获取私钥(Base64编码)
-    public static String getPrivateKey(KeyPair keyPair){
+    public static String getPrivateKey(KeyPair keyPair) {
         PrivateKey privateKey = keyPair.getPrivate();
         byte[] bytes = privateKey.getEncoded();
         return byte2Base64(bytes);
     }
 
     //将Base64编码后的公钥转换成PublicKey对象
-    public static PublicKey string2PublicKey(String pubStr) throws Exception{
+    public static PublicKey string2PublicKey(String pubStr) throws Exception {
         byte[] keyBytes = base642Byte(pubStr);
         X509EncodedKeySpec keySpec = new X509EncodedKeySpec(keyBytes);
         KeyFactory keyFactory = KeyFactory.getInstance(RSAUtil.ALGORITHM);
@@ -47,7 +47,7 @@ public class RSAUtil {
     }
 
     //将Base64编码后的私钥转换成PrivateKey对象
-    public static PrivateKey string2PrivateKey(String priStr) throws Exception{
+    public static PrivateKey string2PrivateKey(String priStr) throws Exception {
         byte[] keyBytes = base642Byte(priStr);
         PKCS8EncodedKeySpec keySpec = new PKCS8EncodedKeySpec(keyBytes);
         KeyFactory keyFactory = KeyFactory.getInstance(RSAUtil.ALGORITHM);
@@ -56,7 +56,7 @@ public class RSAUtil {
     }
 
     //公钥加密
-    public static byte[] publicEncrypt(byte[] content, PublicKey publicKey) throws Exception{
+    public static byte[] publicEncrypt(byte[] content, PublicKey publicKey) throws Exception {
         Cipher cipher = Cipher.getInstance(RSAUtil.ALGORITHM);
         cipher.init(Cipher.ENCRYPT_MODE, publicKey);
         byte[] bytes = cipher.doFinal(content);
@@ -64,7 +64,7 @@ public class RSAUtil {
     }
 
     //私钥解密
-    public static byte[] privateDecrypt(byte[] content, PrivateKey privateKey) throws Exception{
+    public static byte[] privateDecrypt(byte[] content, PrivateKey privateKey) throws Exception {
         Cipher cipher = Cipher.getInstance(RSAUtil.ALGORITHM);
         cipher.init(Cipher.DECRYPT_MODE, privateKey);
         byte[] bytes = cipher.doFinal(content);
@@ -72,8 +72,8 @@ public class RSAUtil {
     }
 
     //字节数组转Base64编码
-    public static String byte2Base64(byte[] bytes){
-        return  new String(Base64.getEncoder().encode(bytes));
+    public static String byte2Base64(byte[] bytes) {
+        return new String(Base64.getEncoder().encode(bytes));
     }
 
     //Base64编码转字节数组

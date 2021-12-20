@@ -12,6 +12,6 @@ public class Hello8 {
     }
 
     private void lambda() {
-        Arrays.asList( "p", "k", "u","f", "o", "r","k").forEach(e -> System.out.println( e ) );
+        Arrays.asList("p", "k", "u", "f", "o", "r", "k").forEach(e -> System.out.println(e));
     }
 }

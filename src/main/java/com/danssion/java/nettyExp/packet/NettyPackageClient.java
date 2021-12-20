@@ -26,9 +26,9 @@ public class NettyPackageClient {
                                 //表示传输消息的时候，在消息报文中增加4个字节的length -> 发送的 ByteBuf 中
                                 //报文 ：
                                 // length(4 字节) + Content
-                                .addLast(new LengthFieldPrepender(4,0,false))
+                                .addLast(new LengthFieldPrepender(4, 0, false))
                                 .addLast(new StringEncoder())
-                                .addLast(new ChannelInboundHandlerAdapter(){
+                                .addLast(new ChannelInboundHandlerAdapter() {
                                     @Override
                                     public void channelActive(ChannelHandlerContext ctx) throws Exception {
                                         ctx.writeAndFlush("i am first request");
@@ -41,7 +41,7 @@ public class NettyPackageClient {
                     }
                 });
         try {
-            ChannelFuture future = bootstrap.connect("localhost",8090).sync();
+            ChannelFuture future = bootstrap.connect("localhost", 8090).sync();
             future.channel().closeFuture().sync();
         } catch (InterruptedException e) {
             e.printStackTrace();

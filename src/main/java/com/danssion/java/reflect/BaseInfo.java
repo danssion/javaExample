@@ -11,16 +11,14 @@ import java.util.Date;
  * @author danssion danssion@sina.com
  * @version 1.0
  * @date 2020/7/4 20:18
- * @desc
- *
- * int.class和Integer.class不是同一份字节码，
+ * @desc int.class和Integer.class不是同一份字节码，
  * Integer.TYPE，TYPE代表包装类对应的基本类的字节码 int.class==Integer.TYPE
  */
 
 public class BaseInfo {
     public static void main(String[] args) {
 //            info();
-            getMethods();
+        getMethods();
 //        newInstance();
 //        testReflect();
 //        contructor();
@@ -46,7 +44,7 @@ public class BaseInfo {
     public static void getMethods() {
         try {
 //            Class c =  Class.forName("org.apache.commons.lang3.StringUtils");
-            Class c =  Class.forName("java.util.Stack");
+            Class c = Class.forName("java.util.Stack");
             Method m[] = c.getDeclaredMethods();
             for (int i = 0; i < m.length; i++) {
                 System.out.println(m[i].toString());
@@ -58,7 +56,7 @@ public class BaseInfo {
     }
 
     public static void newInstance() {
-        Class c =  java.util.Stack.class;
+        Class c = java.util.Stack.class;
         try {
             Object o = c.newInstance();
             System.out.println(o);
@@ -82,8 +80,8 @@ public class BaseInfo {
             e.printStackTrace();
         }
         System.out.println(" == ");
-        System.out.println(cls1==cls2);
-        System.out.println(cls1==cls3);
+        System.out.println(cls1 == cls2);
+        System.out.println(cls1 == cls3);
 
         System.out.println("  ");
         //isPrimitive(判断是否是基本类型的字节码)
@@ -100,9 +98,9 @@ public class BaseInfo {
         String str = "abc";
         try {
             System.out.println(String.class.getConstructor(StringBuffer.class));
-            Constructor<?> con[]  = str.getClass().getConstructors();
+            Constructor<?> con[] = str.getClass().getConstructors();
             System.out.println(con);
-            for (int i = 0 ;i < con.length;i++) {
+            for (int i = 0; i < con.length; i++) {
                 System.out.println(con[i]);
                 //print  all construct
             }
@@ -111,6 +109,7 @@ public class BaseInfo {
             e.printStackTrace();
         }
     }
+
     public static void printClassName(Object obj) {
         System.out.println("The class of " + obj +
                 " is " + obj.getClass().getName());
@@ -121,7 +120,7 @@ public class BaseInfo {
      * Filed类代表某一类中的一个成员变量
      */
     public static void reflectField() {
-        ReflectPointer rp1 = new ReflectPointer(3,4);
+        ReflectPointer rp1 = new ReflectPointer(3, 4);
         Field fieldx = null;//必须是x或者y
         try {
             fieldx = rp1.getClass().getField("x");

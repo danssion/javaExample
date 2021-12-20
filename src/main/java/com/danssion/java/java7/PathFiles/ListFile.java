@@ -10,12 +10,13 @@ public class ListFile {
     public void listFiles() throws IOException {
         Path path = Paths.get("");
         try (DirectoryStream<Path> stream = Files.newDirectoryStream(path, "*.*")) {
-            for (Path entry: stream) {
+            for (Path entry : stream) {
                 //使用entry
                 System.out.println(entry);
             }
         }
     }
+
     /**
      * @param args the command line arguments
      */

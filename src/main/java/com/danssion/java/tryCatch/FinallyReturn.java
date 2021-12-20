@@ -17,11 +17,10 @@ public class FinallyReturn {
     public static void main(String[] args) {
         int re = testFinally();
         System.out.println(re);
-        System.out.println(12&9);
-        int x,a=4,b=6,c=8 ;
-        x=++a+b+++c++;
-        System.out.println("a:" + a + ",b:"+b+",c:"+c+",x:"+x);
-
+        System.out.println(12 & 9);
+        int x, a = 4, b = 6, c = 8;
+        x = ++a + b++ + c++;
+        System.out.println("a:" + a + ",b:" + b + ",c:" + c + ",x:" + x);
 
 
     }

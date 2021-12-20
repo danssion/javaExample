@@ -17,7 +17,7 @@ public class TestApplicationConfig {
     Person person;
 
     @Test
-    public void testPersonProperties(){
+    public void testPersonProperties() {
         System.out.println(person);
     }
 }

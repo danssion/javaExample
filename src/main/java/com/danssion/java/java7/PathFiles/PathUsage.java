@@ -15,6 +15,7 @@ public class PathUsage {
         path1.endsWith(path2); //false
         Paths.get("folder1/./../folder2/myPromotion.text").normalize(); //folder2\myPromotion.text
     }
+
     /**
      * @param args the command line arguments
      */

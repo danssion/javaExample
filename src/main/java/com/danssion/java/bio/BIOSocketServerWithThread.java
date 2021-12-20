@@ -26,14 +26,14 @@ public class BIOSocketServerWithThread {
             while (true) {
                 //阻塞等待接收一个客户端链接，返回socket 表示链接的客户端信息
                 Socket socket = serverSocket.accept();//连接阻塞
-                System.out.println("客户端："+socket.getPort());
+                System.out.println("客户端：" + socket.getPort());
                 //线程池处理 ，IO 变异步, 受限于 CPU 核心数
                 executorService.submit(new SocketThread(socket));
             }
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
-            if (serverSocket!= null) {
+            if (serverSocket != null) {
                 try {
                     serverSocket.close();
                 } catch (IOException e) {

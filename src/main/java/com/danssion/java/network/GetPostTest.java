@@ -20,16 +20,15 @@ import java.util.*;
 public class GetPostTest {
     /**
      * 向指定URL发送GET方法的请求
-     * @param url 发送请求的URL
+     *
+     * @param url   发送请求的URL
      * @param param 请求参数，格式满足name1=value1&name2=value2的形式。
      * @return URL所代表远程资源的响应
      */
-    public static String sendGet(String url , String param)
-    {
+    public static String sendGet(String url, String param) {
         String result = "";
         String urlName = url + "?" + param;
-        try
-        {
+        try {
             URL realUrl = new URL(urlName);
             // 打开和URL之间的连接
             URLConnection conn = realUrl.openConnection();
@@ -43,40 +42,35 @@ public class GetPostTest {
             // 获取所有响应头字段
             Map<String, List<String>> map = conn.getHeaderFields();
             // 遍历所有的响应头字段
-            for (String key : map.keySet())
-            {
+            for (String key : map.keySet()) {
                 System.out.println(key + "--->" + map.get(key));
             }
-            try(
+            try (
                     // 定义BufferedReader输入流来读取URL的响应
                     BufferedReader in = new BufferedReader(
-                            new InputStreamReader(conn.getInputStream() , "utf-8")))
-            {
+                            new InputStreamReader(conn.getInputStream(), "utf-8"))) {
                 String line;
-                while ((line = in.readLine())!= null)
-                {
+                while ((line = in.readLine()) != null) {
                     result += "\n" + line;
                 }
             }
-        }
-        catch(Exception e)
-        {
+        } catch (Exception e) {
             System.out.println("发送GET请求出现异常！" + e);
             e.printStackTrace();
         }
         return result;
     }
+
     /**
      * 向指定URL发送POST方法的请求
-     * @param url 发送请求的URL
+     *
+     * @param url   发送请求的URL
      * @param param 请求参数，格式应该满足name1=value1&name2=value2的形式。
      * @return URL所代表远程资源的响应
      */
-    public static String sendPost(String url , String param)
-    {
+    public static String sendPost(String url, String param) {
         String result = "";
-        try
-        {
+        try {
             URL realUrl = new URL(url);
             // 打开和URL之间的连接
             URLConnection conn = realUrl.openConnection();
@@ -88,37 +82,32 @@ public class GetPostTest {
             // 发送POST请求必须设置如下两行
             conn.setDoOutput(true);
             conn.setDoInput(true);
-            try(
+            try (
                     // 获取URLConnection对象对应的输出流
-                    PrintWriter out = new PrintWriter(conn.getOutputStream()))
-            {
+                    PrintWriter out = new PrintWriter(conn.getOutputStream())) {
                 // 发送请求参数
                 out.print(param);
                 // flush输出流的缓冲
                 out.flush();
             }
-            try(
+            try (
                     // 定义BufferedReader输入流来读取URL的响应
                     BufferedReader in = new BufferedReader(new InputStreamReader
-                            (conn.getInputStream() , "utf-8")))
-            {
+                            (conn.getInputStream(), "utf-8"))) {
                 String line;
-                while ((line = in.readLine())!= null)
-                {
+                while ((line = in.readLine()) != null) {
                     result += "\n" + line;
                 }
             }
-        }
-        catch(Exception e)
-        {
+        } catch (Exception e) {
             System.out.println("发送POST请求出现异常！" + e);
             e.printStackTrace();
         }
         return result;
     }
+
     // 提供主方法，测试发送GET请求和POST请求
-    public static void main(String args[])
-    {
+    public static void main(String args[]) {
         // 发送GET请求
         String s = GetPostTest.sendGet("http://localhost:8888/abc/a.jsp"
                 , null);

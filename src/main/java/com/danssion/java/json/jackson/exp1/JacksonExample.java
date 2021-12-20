@@ -31,7 +31,7 @@ public class JacksonExample {
      * 要一个json对象和json数组的时候，我们可以使用下面的方法来构造ObjectNode和ArrayNode，
      * 类似fastjson中的JSONObject和JSONArray
      */
-    public static void testJsonObject(){
+    public static void testJsonObject() {
         ObjectMapper mapper = new ObjectMapper();
         ObjectNode json = mapper.createObjectNode();
         json.put("name", "Tom");
@@ -39,8 +39,8 @@ public class JacksonExample {
         System.out.println(json);
 
         ObjectNode json1 = mapper.createObjectNode();
-        json1.put("new","newnew");
-        json1.put("ww","cc");
+        json1.put("new", "newnew");
+        json1.put("ww", "cc");
 
 
         ArrayNode jsonNodes = mapper.createArrayNode();
@@ -90,20 +90,19 @@ public class JacksonExample {
     public static void testDeSerializeDate() {
         String json = "{\"name\":\"zhangsan\",\"age\":10,\"birthday\":1592800446397}";
         try {
-        ObjectMapper mapper = new ObjectMapper();
-        User user = mapper.readValue(json, User.class);
-        System.out.println(user);
+            ObjectMapper mapper = new ObjectMapper();
+            User user = mapper.readValue(json, User.class);
+            System.out.println(user);
 
-        String json1 = "{\"name\":\"zhangsan\",\"age\":10,\"birthday\":\"2020-01-01 12:13:14\"}";
-        User user1 = mapper.readValue(json1, User.class);
-        System.out.println(user1);
-        System.out.println(new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").format(user1.getBirthday()));
+            String json1 = "{\"name\":\"zhangsan\",\"age\":10,\"birthday\":\"2020-01-01 12:13:14\"}";
+            User user1 = mapper.readValue(json1, User.class);
+            System.out.println(user1);
+            System.out.println(new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").format(user1.getBirthday()));
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }
 
     }
-
 
 
 }

@@ -35,7 +35,7 @@ public class Compare {
 
         //它们两个的 hashcode 相等，但是 equals 可不相等
         System.out.println(str1.equals(str2));
-        System.out.println("str1 hash:"+str1.hashCode());
-        System.out.println("str2 hash:"+str2.hashCode());
+        System.out.println("str1 hash:" + str1.hashCode());
+        System.out.println("str2 hash:" + str2.hashCode());
     }
 }

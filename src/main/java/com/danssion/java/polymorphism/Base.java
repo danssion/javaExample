@@ -15,6 +15,7 @@ package com.danssion.java.polymorphism;
 
 public class Base {
     public int book = 6;
+
     public void base() {
         System.out.println("父类普通方法");
     }
