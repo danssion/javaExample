@@ -20,6 +20,7 @@ public class OtherToOther {
     public static void main(String[] args) {
         listToString();
         arrayToString();
+        byteToBoolean();
     }
 
     public static void listToString() {
@@ -59,5 +60,30 @@ public class OtherToOther {
         ArrayList<String> list = new ArrayList<String>();
         String[] strings = new String[list.size()];
         list.toArray(strings);
+    }
+
+    public static void byteToBoolean() {
+        Byte b1 = new Byte("1");
+        Byte b2 = new Byte("0");
+
+        System.out.println("Byte:"+b1+" - "+b2);
+
+        System.out.println(b1.byteValue());
+
+        System.out.println("byte:"+b1.byteValue()+" _ "+b2.byteValue());
+
+        Boolean bl1 = new Boolean(b1.toString());
+        Boolean bl2 = new Boolean(b2.toString());
+        System.out.println("Byte to Boolean:"+bl1+" - "+bl2);
+        Boolean bl11 = Boolean.valueOf(b1.toString());
+        Boolean bl12 = Boolean.valueOf(b2.toString());
+        System.out.println("Byte to Boolean with value:"+bl11+" - "+bl12);
+
+        Integer i1 = Integer.valueOf(b1);
+        if(b1 == 0) {
+            System.out.println(false);
+        } else {
+            System.out.println(true);
+        }
     }
 }

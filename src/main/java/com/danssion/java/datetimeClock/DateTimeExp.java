@@ -14,6 +14,8 @@
 package com.danssion.java.datetimeClock;
 
 import java.sql.Timestamp;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.time.*;
 import java.time.chrono.ChronoLocalDateTime;
 import java.time.chrono.Chronology;
@@ -28,11 +30,13 @@ public class DateTimeExp {
     public static void main(String[] args) {
         DateTimeExp dateTimeExp = new DateTimeExp();
         dateTimeExp.timestampTest();
+//        dateTimeExp.timestampTest();
 //        dateTimeExp.localtime();
 //        dateTimeExp.zone();
 //        dateTimeExp.testFormat();
 
 //        testInstant();
+        dateTimeExp.timestampTest();
     }
 
     private void zone() {
@@ -64,6 +68,21 @@ public class DateTimeExp {
         System.out.println(LocalDateTime.now());
         System.out.println(LocalDateTime.now().getHour());
         LocalDateTime.now().atZone(Clock.systemDefaultZone().getZone());
+
+
+        Timestamp ts = new Timestamp(System.currentTimeMillis());
+        String tsStr = "";
+        DateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+        try {
+            //方法一
+            tsStr = sdf.format(ts);
+            System.out.println("timestamp to ts ："+tsStr);
+            //方法二
+            tsStr = ts.toString();
+            System.out.println(tsStr);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     private void localtime() {
@@ -187,6 +206,10 @@ public class DateTimeExp {
         Clock clock2 = Clock.fixed(instant1, ZoneId.systemDefault()); // 固定瞬时时间时钟
         Instant instant3 = Instant.now(clock2);// 得到时钟的瞬时时间
         System.out.println(instant3.toEpochMilli());// equals instant1
+
+        //从字符串类型中创建Instant类型的时间
+        Instant instant = Instant.parse("2021-10-23T10:12:35Z");
+        System.out.println("2021-10-23T10:12:35Z:"+instant.getEpochSecond());
     }
 
     public static void testLocalDateTime() {
