@@ -1,4 +1,4 @@
-package com.danssion.java.baseType.TreeMap;
+package com.danssion.java.baseType.Map;
 
 import java.util.*;
 

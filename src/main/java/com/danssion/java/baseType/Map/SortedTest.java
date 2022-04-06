@@ -1,4 +1,4 @@
-package com.danssion.java.baseType.TreeMap;
+package com.danssion.java.baseType.Map;
 
 /**
  * @author duanxiang  duanxiang@haodelian.com

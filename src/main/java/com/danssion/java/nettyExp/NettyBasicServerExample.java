@@ -2,11 +2,11 @@ package com.danssion.java.nettyExp;
 
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.*;
-import io.netty.channel.epoll.EpollServerSocketChannel;
+//import io.netty.channel.epoll.EpollServerSocketChannel;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
-import io.netty.channel.socket.nio.NioSocketChannel;
+//import io.netty.channel.socket.nio.NioSocketChannel;
 
 public class NettyBasicServerExample {
 
