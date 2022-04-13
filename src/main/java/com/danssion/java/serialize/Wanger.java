@@ -1,5 +1,8 @@
 package com.danssion.java.serialize;
 
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.io.Serializable;
 
 /**
@@ -38,6 +41,19 @@ public class Wanger implements Serializable {
         this.age = age;
     }
 
+    /**
+     * 可以通过下面的方法 重写 transient 修饰的属性
+     * @return
+     */
+    private void writeObject(ObjectOutputStream oos) throws IOException {
+        oos.defaultWriteObject();
+        oos.writeObject(meizi);
+    }
+
+    private void readObject(ObjectInputStream in) throws IOException, ClassNotFoundException {
+        in.defaultReadObject();
+        this.meizi = (String)in.readObject();
+    }
 
     @Override
     public String toString() {

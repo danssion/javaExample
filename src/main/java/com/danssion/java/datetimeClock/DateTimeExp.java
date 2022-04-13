@@ -28,8 +28,7 @@ import java.util.Locale;
 
 public class DateTimeExp {
     public static void main(String[] args) {
-        DateTimeExp dateTimeExp = new DateTimeExp();
-        dateTimeExp.timestampTest();
+        DateTimeExp dateTimeExp =  new DateTimeExp();
 //        dateTimeExp.timestampTest();
 //        dateTimeExp.localtime();
 //        dateTimeExp.zone();

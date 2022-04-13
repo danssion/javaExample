@@ -7,6 +7,17 @@ import java.io.*;
  * @version 1.0
  * @date 2020/7/14 00:52
  * @desc
+ * json (fast / gjson / jackson)
+ * xml
+ * java
+ * protobuf
+ * kyro
+ * avro
+ * jute
+ * messagepack
+ * marshalling  (jboss)
+ * thrift
+ * hessian (hassion hassion-sofa hassian-dubbo )
  */
 public class TestSerialize {
 
@@ -76,5 +87,10 @@ public class TestSerialize {
         }
 // Wanger{name=王二,age=18}
 // Wanger{name=null,age=0}
+    }
+
+    public static <T> T deserialFromFile() throws IOException, ClassNotFoundException {
+        ObjectInputStream ois = new ObjectInputStream(new FileInputStream(new File("chenmo")));
+        return (T)ois.readObject();
     }
 }

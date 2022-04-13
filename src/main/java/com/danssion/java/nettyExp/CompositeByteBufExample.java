@@ -13,7 +13,7 @@ public class CompositeByteBufExample {
 //        total.writeBytes(h);
 //        total.writeBytes(body);
 
-        //从逻辑层面构建了一个总的buf  ，都是引用的
+        //从逻辑层面构建了一个总的buf  ，都是引用上面的
         CompositeByteBuf compositeByteBuf = Unpooled.compositeBuffer();
         compositeByteBuf.addComponents(true, h, body);
         log(compositeByteBuf);

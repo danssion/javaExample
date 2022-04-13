@@ -3,8 +3,8 @@ package com.danssion.java.thread;
 import org.apache.tools.ant.taskdefs.Sleep;
 
 public class VisableDemo {
-    //    public static boolean stop = false;
-    //保重可见性
+//    public static boolean stop = false;
+    //保证可见性
     public static volatile boolean stop = false;
 
     public static void main(String[] args) throws InterruptedException {
