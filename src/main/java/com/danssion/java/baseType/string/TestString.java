@@ -27,7 +27,7 @@ public class TestString {
 
 
     public static void main(String[] args) {
-        testString();
+//        testString();
         strToArray();
     }
 
@@ -36,6 +36,10 @@ public class TestString {
         System.out.println(s);
         List<String> list = Arrays.asList(s.split(","));
         System.out.println(list);
+
+        String s1 = "btc/";
+        String[] arr = s1.split("/");
+        System.out.println(arr[1]);
     }
 
 }

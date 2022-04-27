@@ -18,7 +18,22 @@ public class bigDecimal {
 
 //        compare();
 //        stringToBigDec();
-        BigToStringWithoutScientific();
+//        BigToStringWithoutScientific();
+        toBigD();
+    }
+
+    public static void toBigD() {
+        // 0.1无法准确地表示为 double
+        double d = 0.1;
+        BigDecimal a =new BigDecimal(d);
+        System.out.println("a values is:"+a);
+        BigDecimal a1 = new BigDecimal(Double.toString(d));
+        System.out.println("a1 v is:"+a1);
+
+        BigDecimal b =new BigDecimal("0.1");
+        System.out.println("b values is:"+b);
+
+
     }
 
     public static void compare() {
