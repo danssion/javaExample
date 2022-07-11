@@ -11,6 +11,7 @@ import io.netty.channel.socket.nio.NioServerSocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
 import io.netty.handler.logging.LogLevel;
 import io.netty.handler.logging.LoggingHandler;
+import java.nio.channels.ServerSocketChannel;
 
 public class NettyBasicServerExample {
 
@@ -22,6 +23,10 @@ public class NettyBasicServerExample {
 
         //主线程组
         EventLoopGroup mainGroup = new NioEventLoopGroup();
+//        mainGroup.schedule();  定时任务
+//        mainGroup.execute();   异步线程
+//        mainGroup.register();   注册多路复用
+
         //表示多个工作线程组（默认cpu 核心数的两倍）
         EventLoopGroup workGroup = new NioEventLoopGroup(4);
         // 服务要启动，需要创建 ServerBootstrap,这里已经封装 NIO 的模板式的代码
@@ -59,6 +64,15 @@ public class NettyBasicServerExample {
                     }
                 });
         try {
+            /**
+             * 主要的启动逻辑  在  bind 方法中，需要完成以下事情：
+             * 1. 初始化NioServerSocketChannel
+             * 2. 初始化EventLoop
+             * 3. NioServerSocketChannel 绑定监听端口
+             * 4. NioServerSocketChannel 注册到 selector
+             * 5. NioServerSocketChannel 中的 handler 构建
+             * 6. NioSocketChannel 中的 handler 的构建
+             */
             // bootstrap.bind(8090) 是异步，可以继续执行
             ChannelFuture channelFuture = bootstrap.bind(8090).sync(); //同步阻塞等到客户端连接
             System.out.println("Netty server started success !!");
