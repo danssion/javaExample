@@ -6,31 +6,29 @@ import java.util.stream.Collector;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import static java.util.stream.Collectors.collectingAndThen;
-import static java.util.stream.Collectors.counting;
-import static java.util.stream.Collectors.maxBy;
+import static java.util.stream.Collectors.*;
 
 public class SteamUsage {
 
     public static void main(String[] args) {
         SteamUsage steamUsage = new SteamUsage();
-//        steamUsage.useApi();
+        steamUsage.useApi();
 //        steamUsage.useReduce();
 //        steamUsage.useCollect();
-        steamUsage.sort();
+//        steamUsage.sort();
     }
 
     private static List<Person> list = new ArrayList<>();
 
     static {
         list.add(new Person("Jam", 21));
-        list.add(new Person("James", 19, true));
-        list.add(new Person("Lesha", 21, true));
+        list.add(new Person("James",1000001L, 19, true));
+        list.add(new Person("Lesha",1000002L,  21, true));
         list.add(new Person("Minu Very ", 21, true));
         list.add(new Person("Tom Sweet", 36));
-        list.add(new Person("Jack Very", 64, 1));
-        list.add(new Person("Lily Dubble", 11, 1));
-        list.add(new Person("Candy Sweet", 17, 2));
+        list.add(new Person("Jack Very",1000004L,  64, 1));
+        list.add(new Person("Lily Dubble",1000003L,  11, 1));
+        list.add(new Person("Candy Sweet",1000005L,  17, 2));
 
     }
 
@@ -66,6 +64,15 @@ public class SteamUsage {
         System.out.println("use map split ,flat map ,distinct  : ");
         list.stream().map(Person::getName).map(line -> line.split(" ")).
                 flatMap(Arrays::stream).distinct().forEach(l -> System.out.println(l));
+
+        System.out.println("output map ");
+        Map<Long,String> map = list.stream().collect(toMap(Person::getId,Person::getName,(v1,v2) -> v1));
+        System.out.println(map);
+
+        // Map<Integer,User> userMap4 = userList.stream().collect(Collectors.toMap(User::getId, Function.identity(),(key1,key2)->key2));
+        Map<Long,Person> map1 = list.stream().collect(Collectors.toMap(item -> item.getId(),item -> item,(v1,v2) -> v1));
+        System.out.println(map1);
+
     }
 
     public void sort() {

@@ -9,6 +9,7 @@ import java.util.function.Supplier;
 @Setter
 class Person implements Comparable<Person> {
     private String name;
+    private long id;
     private int age;
     private boolean isStudent = false;
     private int sex = 1;
@@ -21,16 +22,35 @@ class Person implements Comparable<Person> {
         this.age = age;
     }
 
+    public Person(String name, long id, int age) {
+        this.name = name;
+        this.age = age;
+        this.id = id;
+    }
+
     public Person(String name, int age, boolean stu) {
         this.name = name;
         this.age = age;
         this.isStudent = stu;
     }
+    public Person(String name, long id, int age, boolean stu) {
+        this.name = name;
+        this.age = age;
+        this.isStudent = stu;
+        this.id = id;
+    }
+
 
     public Person(String name, int age, int sex) {
         this.name = name;
         this.age = age;
         this.sex = sex;
+    }
+    public Person(String name, long id, int age, int sex) {
+        this.name = name;
+        this.age = age;
+        this.sex = sex;
+        this.id = id;
     }
 
     public static Person getInstance(final Supplier<Person> supplier) {
